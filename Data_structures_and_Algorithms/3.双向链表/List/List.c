@@ -1,4 +1,12 @@
 #include"List.h"
+//双向带头循环链表
+// typedef struct ListNode {
+// 	LTDataType data;
+// 	struct ListNode* prev;
+// 	struct ListNode* next;
+// }LTNode;
+
+// 创建新节点
 LTNode* LTBuyNode(LTDataType x) {
 	LTNode* newnode = (LTNode*)malloc(sizeof(LTNode));
 	if (newnode == NULL) {
@@ -10,6 +18,9 @@ LTNode* LTBuyNode(LTDataType x) {
 
 	return newnode;
 }
+
+
+
 //void LTInit(LTNode** pphead) {
 //	*pphead = (LTNode*)malloc(sizeof(LTNode));
 //	if (*pphead == NULL) {
@@ -19,12 +30,15 @@ LTNode* LTBuyNode(LTDataType x) {
 //	(*pphead)->data = -1;
 //	(*pphead)->next = (*pphead)->prev = *pphead;
 //}
+
+//初始化一个双向链表，返回一个哨兵位的头节点-1
 LTNode* LTInit() {
 	LTNode* phead = LTBuyNode(-1);
 	return phead;
 }
 
-//尾插
+//尾插 
+//需要注意一点: 哨兵位头节点的前置节点既是tail尾结点
 void LTPushBack(LTNode* phead, LTDataType x) {
 	assert(phead);
 	LTNode* newnode = LTBuyNode(x);
@@ -35,6 +49,7 @@ void LTPushBack(LTNode* phead, LTDataType x) {
 	phead->prev->next = newnode;
 	phead->prev = newnode;
 }
+
 //头插
 void LTPushFront(LTNode* phead, LTDataType x) {
 	assert(phead);
@@ -89,6 +104,8 @@ void LTPopFront(LTNode* phead) {
 	free(del);
 	del = NULL;
 }
+
+//查找，找到返回节点的地址，找不到返回NULL
 LTNode* LTFind(LTNode* phead, LTDataType x) {
 	assert(phead);
 	LTNode* pcur = phead->next;
@@ -101,6 +118,7 @@ LTNode* LTFind(LTNode* phead, LTDataType x) {
 	}
 	return NULL;
 }
+
 //在pos位置之后插入数据
 void LTInsert(LTNode* pos, LTDataType x) {
 	assert(pos);
