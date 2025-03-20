@@ -35,12 +35,12 @@ void HPInitArray(HP* php, HPDataType* a, int n)
 	//for (int i = 1; i < php->size; i++)
 	//{
 	//	AdjustUp(php->a, i);
-	//}
+	//}//向上调整，从堆顶元素开始
 
 	// 向下调整，建堆 O(N)
 	for (int i = (php->size-1 - 1)/2; i >= 0; i--)
 	{
-		AdjustDown(php->a, php->size, i);
+		AdjustDown(php->a, php->size, i);//向下调整，从堆底元素开始
 	}
 }
 
