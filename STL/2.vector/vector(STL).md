@@ -401,14 +401,14 @@ using namespace std;
 #include <vector>
 int main()
 {
- int a[] = { 1, 2, 3, 4 };
- vector<int> v(a, a + sizeof(a) / sizeof(int));
- // 使用find查找3所在位置的iterator
- vector<int>::iterator pos = find(v.begin(), v.end(), 3);
- // 删除pos位置的数据，导致pos迭代器失效。
- v.erase(pos);
- cout << *pos << endl; // 此处会导致非法访问
- return 0;
+ 	int a[] = { 1, 2, 3, 4 };
+ 	vector<int> v(a, a + sizeof(a) / sizeof(int));
+ 	// 使用find查找3所在位置的iterator
+ 	vector<int>::iterator pos = find(v.begin(), v.end(), 3);
+ 	// 删除pos位置的数据，导致pos迭代器失效。
+ 	v.erase(pos);
+ 	cout << *pos << endl; // 此处会导致非法访问
+ 	return 0;
 }
 ```
 以下代码的功能是删除vector中所有的偶数，请问那个代码是正确的，为什么？

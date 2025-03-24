@@ -23,6 +23,12 @@ namespace bit
         size_t _capacity;
     };*/
 
+
+    //  private:
+    //iterator _start = nullptr;
+    //iterator _finish = nullptr;
+    //iterator _end_of_storage = nullptr;
+
     template <class T>
     class vector
     {
@@ -101,7 +107,8 @@ namespace bit
                 push_back(e);
             }
         }
-        // 16:05继续
+
+        // v1.swap(v2)
         void swap(vector<T> &v)
         {
             std::swap(_start, v._start);
@@ -245,6 +252,7 @@ namespace bit
         iterator _end_of_storage = nullptr;
     };
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void test_vector1()
     {
         bit::vector<int> v1;
