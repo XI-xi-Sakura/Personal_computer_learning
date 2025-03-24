@@ -1,5 +1,11 @@
 #include"string.h"
 
+
+// 		char* _str;
+// 		size_t _size;
+// 		size_t _capacity;
+
+
 namespace bit
 {
 	const size_t string::npos = -1;
@@ -10,6 +16,9 @@ namespace bit
 	//	_size = 0;
 	//	_capacity = 0;
 	//}
+
+	//typedef char* iterator;
+	//typedef const char* const_iterator;
 
 	string::iterator string::begin()
 	{
@@ -31,7 +40,7 @@ namespace bit
 		return _str + _size;
 	}
 
-	// 21:10
+	
 	string::string(const char* str)
 		:_size(strlen(str))
 	{
@@ -58,6 +67,7 @@ namespace bit
 			char* tmp = new char[s._capacity + 1];
 			strcpy(tmp, s._str);
 			delete[] _str;
+
 			_str = tmp;
 			_size = s._size;
 			_capacity = s._capacity;
@@ -213,7 +223,7 @@ namespace bit
 	{
 		assert(pos < _size);
 
-		// len大于前面字符个数时，有多少删多少
+		// len大于后面剩余字符个数时，有多少删多少
 		if (len >= _size-pos)
 		{
 			_str[pos] = '\0';
@@ -221,7 +231,7 @@ namespace bit
 		}
 		else
 		{
-			strcpy(_str + pos, _str + pos + len);
+			strcpy(_str + pos, _str + pos + len);//从 _str + pos + len 起始的字符串复制到 _str + pos 处。
 			_size -= len;
 		}
 	}
@@ -241,7 +251,7 @@ namespace bit
 
 	size_t string::find(const char* sub, size_t pos)
 	{
-		char* p = strstr(_str + pos, sub);
+		char* p = strstr(_str + pos, sub);//在字符串中查找子字符串第一次出现的位置
 		return  p - _str;
 	}
 

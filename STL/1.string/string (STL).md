@@ -112,7 +112,7 @@ void Teststring2()
 |--|--|
 |operator[ ]  | 返回pos位置的字符，const string类对象调用
 |begin/end|begin获取一个字符的迭代器 /end获取最后一个字符下一个位置的迭代器
-|rebegin/reng|begin获取一个字符的迭代器 + end获取最后一个字符下一个位置的迭代器
+|rebegin/rend|begin获取一个字符的迭代器 + end获取最后一个字符下一个位置的迭代器
 |范围for|C++11支持更简洁的范围for的新遍历方式
 
 

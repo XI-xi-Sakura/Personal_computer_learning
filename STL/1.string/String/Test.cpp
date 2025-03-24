@@ -3,6 +3,7 @@
 #include<string>
 #include<list>
 #include<algorithm>
+#include <cstring>
 using namespace std;
 
 void test_string1()
@@ -334,7 +335,7 @@ void TestPushBack()
 	cout << "capacity changed: " << sz << '\n';
 
 	cout << "making s grow:\n";
-	for (int i = 0; i < 200; ++i)
+	for (int i = 0; i < 210; ++i)
 	{
 		s.push_back('c');
 		if (sz != s.capacity())
@@ -731,9 +732,25 @@ namespace bit
 	}
 }
 
+// void TestPushBack()
+// {
+// 	string s;
+// 	size_t sz = s.capacity();
+// 	cout << "making s grow:\n";
+// 	for (int i = 0; i < 100; ++i)
+// 	{
+// 		s.push_back('c');
+// 		if (sz != s.capacity())
+// 		{
+// 			sz = s.capacity();
+// 			cout << "capacity changed: " << sz << '\n';
+// 		}
+// 	}
+// }
+
 int main()
 {
-	bit::test_string7();
+	TestPushBack();
 
 	return 0;
 }
