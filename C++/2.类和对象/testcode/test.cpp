@@ -133,39 +133,90 @@ using namespace std;
 // }
 
 // 拷贝构造
-class Date
+// class Date
+// {
+// public:
+// 	Date(int year, int minute, int day)
+// 	{
+// 		cout << "Date(int,int,int):" << this << endl;
+// 	}
+
+// 	Date(const Date &d)
+// 	{
+// 		cout << "Date(const Date& d):" << this << endl;
+// 	}
+
+// 	~Date()
+// 	{
+// 		cout << "~Date():" << this << endl;
+// 	}
+
+// private:
+// 	int _year;
+// 	int _month;
+// 	int _day;
+// };
+
+// Date Test(Date d)
+// {
+// 	Date temp(d);
+// 	return temp;
+// }
+
+// class A
+// {
+// public:
+// 	 A() { ++_scount; }
+// 	 A(const A& t) { ++_scount; }
+// 	 ~A() { --_scount; }
+// 	 static int GetACount() { return _scount; }
+// private:
+//  	static int _scount;
+// };
+
+// int A::_scount = 0;
+
+// void TestA()
+// {
+// 	cout << A::GetACount() << endl;
+// 	A a1, a2;
+// 	A a3(a1);
+// 	cout << A::GetACount() << endl;
+// }
+
+
+class A
 {
-public:
-	Date(int year, int minute, int day)
-	{
-		cout << "Date(int,int,int):" << this << endl;
-	}
-
-	Date(const Date &d)
-	{
-		cout << "Date(const Date& d):" << this << endl;
-	}
-
-	~Date()
-	{
-		cout << "~Date():" << this << endl;
-	}
-
 private:
-	int _year;
-	int _month;
-	int _day;
+	 static int k;
+	 int h =100;
+	 
+public:
+
+ class B // B天生就是A的友元
+ {
+ public:
+	 void foo(const A& a)
+	 {
+		 cout << k << endl;//OK
+		 cout << a.h << endl;//OK
+	 }
+ };
 };
 
-Date Test(Date d)
-{
-	Date temp(d);
-	return temp;
-}
+int A::k = 1;
 
 int main()
 {
-	Date d1(2022, 1, 13);
-	Test(d1);
-	return 0;
+ 	A::B b;
+ 	b.foo(A());
+ 
+ 	return 0;
 }
+
+// int main()
+// {
+// 	// Date d1(2022, 1, 13);
+// 	TestA();
+// 	return 0;
+// }
