@@ -30,7 +30,7 @@ void TestList1()
     int array[] = { 16,2,77,29 };
     list<int> l5(array, array + sizeof(array) / sizeof(int));
 
-    // 列表格式初始化C++11
+    // 列表格式初始化C++11 初始化列表
     list<int> l6{ 1,2,3,4,5 };
 
     // 用迭代器方式打印l5中的元素

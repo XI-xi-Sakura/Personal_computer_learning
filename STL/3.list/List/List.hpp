@@ -1,44 +1,47 @@
 #pragma once
-#include<assert.h>
-#include<iostream>
+#include <assert.h>
+#include <iostream>
 using namespace std;
 
 namespace bit
 {
-	template<class T>
+	template <class T>
 	struct ListNode
 	{
-		ListNode<T>* _next;
-		ListNode<T>* _prev;
+		ListNode<T> *_next;
+		ListNode<T> *_prev;
 
 		T _data;
 
-		ListNode(const T& data = T())
-			:_next(nullptr)
-			,_prev(nullptr)
-			,_data(data)
-		{}
+		ListNode(const T &data = T()) // 使用 T() 调用模板类型 T 的默认构造函数来创建一个默认值。
+			: _next(nullptr),		  // 这意味着如果在创建 ListNode 对象时没有提供数据，将使用 T 类型的默认值进行初始化。
+			  _prev(nullptr),
+			  _data(data)
+		{
+		}
 	};
 
-	template<class T, class Ref, class Ptr>
+	template <class T, class Ref, class Ptr>
 	struct ListIterator
 	{
 		typedef ListNode<T> Node;
-		typedef ListIterator<T, Ref, Ptr> Self;
-		Node* _node;
+		typedef ListIterator<T, Ref, Ptr> Self; // typedef ListIterator<T, T &, T *> iterator;
+												// typedef ListIterator<T, const T &, const T *> const_iterator;
+		Node *_node;
 
-		ListIterator(Node* node)
-			:_node(node)
-		{}
+		ListIterator(Node *node)
+			: _node(node)
+		{
+		}
 
 		// ++it;
-		Self& operator++()
+		Self &operator++()
 		{
 			_node = _node->_next;
 			return *this;
 		}
 
-		Self& operator--()
+		Self &operator--()
 		{
 			_node = _node->_prev;
 			return *this;
@@ -52,7 +55,7 @@ namespace bit
 			return tmp;
 		}
 
-		Self& operator--(int)
+		Self operator--(int)
 		{
 			Self tmp(*this);
 			_node = _node->_prev;
@@ -70,25 +73,25 @@ namespace bit
 			return &_node->_data;
 		}
 
-		bool operator!=(const Self& it)
+		bool operator!=(const Self &it)
 		{
 			return _node != it._node;
 		}
 
-		bool operator==(const Self& it)
+		bool operator==(const Self &it)
 		{
 			return _node == it._node;
 		}
 	};
 
-	//template<class T>
-	//class ListConstIterator
+	// template<class T>
+	// class ListConstIterator
 	//{
 	//	typedef ListNode<T> Node;
 	//	typedef ListConstIterator<T> Self;
 
 	//	Node* _node;
-	//public:
+	// public:
 	//	ListConstIterator(Node* node)
 	//		:_node(node)
 	//	{}
@@ -144,23 +147,24 @@ namespace bit
 	//	}
 	//};
 
-	template<class T>
+	template <class T>
 	class list
 	{
 		typedef ListNode<T> Node;
+
 	public:
 		// 不符合迭代器的行为，无法遍历
-		//typedef Node* iterator;
-		//typedef ListIterator<T> iterator;
-		//typedef ListConstIterator<T> const_iterator;
+		// typedef Node* iterator;
+		// typedef ListIterator<T> iterator;
+		// typedef ListConstIterator<T> const_iterator;
 
-		typedef ListIterator<T, T&, T*> iterator;
-		typedef ListIterator<T, const T&, const T*> const_iterator;
+		typedef ListIterator<T, T &, T *> iterator;
+		typedef ListIterator<T, const T &, const T *> const_iterator;
 
 		iterator begin()
 		{
-			//iterator it(_head->_next);
-			//return it;
+			// iterator it(_head->_next);
+			// return it;
 			return iterator(_head->_next);
 		}
 
@@ -195,25 +199,25 @@ namespace bit
 		{
 			empty_init();
 
-			for (const auto& e : il)
+			for (const auto &e : il)
 			{
 				push_back(e);
 			}
 		}
 
 		// lt2(lt1)
-		list(const list<T>& lt)
+		list(const list<T> &lt)
 		{
 			empty_init();
 
-			for (const auto& e : lt)
+			for (const auto &e : lt)
 			{
 				push_back(e);
 			}
 		}
 
 		// lt1 = lt3
-		list<T>& operator=(list<T> lt)
+		list<T> &operator=(list<T> lt)
 		{
 			swap(_head, lt._head);
 
@@ -236,7 +240,7 @@ namespace bit
 			}
 		}
 
-		void push_back(const T& x)
+		void push_back(const T &x)
 		{
 			/*Node* newnode = new Node(x);
 			Node* tail = _head->_prev;
@@ -254,7 +258,7 @@ namespace bit
 			erase(--end());
 		}
 
-		void push_front(const T& x)
+		void push_front(const T &x)
 		{
 			insert(begin(), x);
 		}
@@ -265,11 +269,11 @@ namespace bit
 		}
 
 		// 没有iterator失效
-		iterator insert(iterator pos, const T& x)
+		iterator insert(iterator pos, const T &x)
 		{
-			Node* cur = pos._node;
-			Node* newnode = new Node(x);
-			Node* prev = cur->_prev;
+			Node *cur = pos._node;
+			Node *newnode = new Node(x);
+			Node *prev = cur->_prev;
 
 			// prev  newnode  cur
 			prev->_next = newnode;
@@ -285,9 +289,9 @@ namespace bit
 		{
 			assert(pos != end());
 
-			Node* cur = pos._node;
-			Node* prev = cur->_prev;
-			Node* next = cur->_next;
+			Node *cur = pos._node;
+			Node *prev = cur->_prev;
+			Node *next = cur->_next;
 
 			prev->_next = next;
 			next->_prev = prev;
@@ -298,13 +302,13 @@ namespace bit
 		}
 
 	private:
-		Node* _head;
+		Node *_head;
 	};
 
-	void Func(const list<int>& lt)
+	void Func(const list<int> &lt)
 	{
 		// const iterator const 迭代器不能普通迭代器前面加const修饰
-		// const 迭代器目标本身可以修改，指向的内容不能修改 类似const T* p 
+		// const 迭代器目标本身可以修改，指向的内容不能修改 类似const T* p
 		list<int>::const_iterator it = lt.begin();
 		while (it != lt.end())
 		{
@@ -330,7 +334,7 @@ namespace bit
 
 		Func(lt1);
 
-		//ListIterator<int> it = lt1.begin();
+		// ListIterator<int> it = lt1.begin();
 		list<int>::iterator it = lt1.begin();
 		while (it != lt1.end())
 		{
@@ -354,12 +358,10 @@ namespace bit
 		int _col;
 
 		Pos(int row = 0, int col = 0)
-			:_row(row)
-			,_col(col)
-		{}
+			: _row(row), _col(col)
+		{
+		}
 	};
-
-	
 
 	void test_list2()
 	{
@@ -371,17 +373,16 @@ namespace bit
 		list<Pos>::iterator it = lt1.begin();
 		while (it != lt1.end())
 		{
-			//cout << (*it)._row << ":" << (*it)._col << endl;
-			// 为了可读性，省略了一个->
+			// cout << (*it)._row << ":" << (*it)._col << endl;
+			//  为了可读性，省略了一个->
 			cout << it->_row << ":" << it->_col << endl;
-			//cout << it->->_row << ":" << it->->_col << endl;
+			// cout << it->->_row << ":" << it->->_col << endl;
 			cout << it.operator->()->_row << ":" << it.operator->()->_col << endl;
 
 			++it;
 		}
 		cout << endl;
 	}
-
 
 	void test_list4()
 	{
@@ -412,7 +413,7 @@ namespace bit
 		lt1.pop_back();
 		lt1.pop_back();
 		lt1.pop_back();
-		//lt1.pop_back();
+		// lt1.pop_back();
 		Func(lt1);
 	}
 
@@ -445,7 +446,7 @@ namespace bit
 
 	void test_list6()
 	{
-		list<int> lt1 = { 1,2,3,4,5,6 };
+		list<int> lt1 = {1, 2, 3, 4, 5, 6};
 		Func(lt1);
 	}
 }
