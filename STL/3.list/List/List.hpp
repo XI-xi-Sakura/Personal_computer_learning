@@ -21,13 +21,24 @@ namespace bit
 		}
 	};
 
+	/*
+	List 的迭代器
+	迭代器有两种实现方式，具体应根据容器底层数据结构实现：
+	  1. 原生态指针，比如：vector
+	  2. 将原生态指针进行封装，因迭代器使用形式与指针完全相同，因此在自定义的类中必须实现以下方法：
+		 1. 指针可以解引用，迭代器的类中必须重载operator*()
+		 2. 指针可以通过->访问其所指空间成员，迭代器类中必须重载oprator->()
+		 3. 指针可以++向后移动，迭代器类中必须重载operator++()与operator++(int)
+			至于operator--()/operator--(int)释放需要重载，根据具体的结构来抉择，双向链表可以向前移动，所以需要重载，如果是forward_list就不需要重载--
+		 4. 迭代器需要进行是否相等的比较，因此还需要重载operator==()与operator!=()
+	*/
+
 	template <class T, class Ref, class Ptr>
 	struct ListIterator
 	{
 		typedef ListNode<T> Node;
 		typedef ListIterator<T, Ref, Ptr> Self; // typedef ListIterator<T, T &, T *> iterator;
 												// typedef ListIterator<T, const T &, const T *> const_iterator;
-		Node *_node;
 
 		ListIterator(Node *node)
 			: _node(node)
@@ -82,6 +93,83 @@ namespace bit
 		{
 			return _node == it._node;
 		}
+		Node *_node;
+	};
+
+	template <class Iterator>
+	class ReverseListIterator
+	{
+		// 注意：此处typename的作用是明确告诉编译器，Ref是Iterator类中的一个类型，而不是静态成员变量
+		// 否则编译器编译时就不知道Ref是Iterator中的类型还是静态成员变量
+		// 因为静态成员变量也是按照 类名::静态成员变量名 的方式访问的
+	public:
+		typedef typename Iterator::Ref Ref;
+		typedef typename Iterator::Ptr Ptr;
+		typedef ReverseListIterator<Iterator> Self;
+
+	public:
+		//////////////////////////////////////////////
+		// 构造
+		ReverseListIterator(Iterator it)
+			: _it(it)
+		{
+		}
+
+		//////////////////////////////////////////////
+		// 具有指针类似行为
+		Ref operator*()
+		{
+			Iterator temp(_it);
+			--temp;
+			return *temp;
+		}
+
+		Ptr operator->()
+		{
+			return &(operator*());
+		}
+
+		//////////////////////////////////////////////
+		// 迭代器支持移动
+		Self &operator++()
+		{
+			--_it;
+			return *this;
+		}
+
+		Self operator++(int)
+		{
+			Self temp(*this);
+			--_it;
+			return temp;
+		}
+
+		Self &operator--()
+		{
+			++_it;
+			return *this;
+		}
+
+		Self operator--(int)
+		{
+			Self temp(*this);
+			++_it;
+			return temp;
+		}
+
+		//////////////////////////////////////////////
+		// 迭代器支持比较
+		bool operator!=(const Self &l) const
+		{
+			return _it != l._it;
+		}
+
+		bool operator==(const Self &l) const
+		{
+			return _it != l._it;
+		}
+
+		Iterator _it;
 	};
 
 	// template<class T>
@@ -161,6 +249,9 @@ namespace bit
 		typedef ListIterator<T, T &, T *> iterator;
 		typedef ListIterator<T, const T &, const T *> const_iterator;
 
+		typedef ReverseListIterator<iterator> reverse_iterator;
+		typedef ReverseListIterator<const_iterator> const_reverse_iterator;
+
 		iterator begin()
 		{
 			// iterator it(_head->_next);
@@ -181,6 +272,26 @@ namespace bit
 		const_iterator end() const
 		{
 			return const_iterator(_head);
+		}
+
+		reverse_iterator rbegin()
+		{
+			return reverse_iterator(end());
+		}
+
+		reverse_iterator rend()
+		{
+			return reverse_iterator(begin());
+		}
+
+		const_reverse_iterator rbegin() const
+		{
+			return const_reverse_iterator(end());
+		}
+
+		const_reverse_iterator rend() const
+		{
+			return const_reverse_iterator(begin());
 		}
 
 		void empty_init()
