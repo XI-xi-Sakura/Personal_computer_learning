@@ -329,87 +329,102 @@ using namespace std;
 //         cout << "Student()" << endl;
 //     }
 
-//     Student(const Student& s)
-//         : Person(s)
-//         , _num(s._num)
-//     {
-//         cout << "Student(const Student& s)" << endl;
-//     }
+// //     Student(const Student& s)
+// //         : Person(s)
+// //         , _num(s._num)
+// //     {
+// //         cout << "Student(const Student& s)" << endl;
+// //     }
 
-//     Student& operator=(const Student& s)
-//     {
-//         cout << "Student& operator= (const Student& s)" << endl;
-//         if (this != &s)
-//         {
-//             // 构成隐藏，所以需要显示调用
-//             Person::operator=(s);
-//             _num = s._num;
-//         }
-//         return *this;
-//     }
+// //     Student& operator=(const Student& s)
+// //     {
+// //         cout << "Student& operator= (const Student& s)" << endl;
+// //         if (this != &s)
+// //         {
+// //             // 构成隐藏，所以需要显示调用
+// //             Person::operator=(s);
+// //             _num = s._num;
+// //         }
+// //         return *this;
+// //     }
 
-//     ~Student()
-//     {
-//         cout << "~Student()" << endl;
-//     }
-// protected:
-//     int _num; // 学号
+// //     ~Student()
+// //     {
+// //         cout << "~Student()" << endl;
+// //     }
+// // protected:
+// //     int _num; // 学号
+// // };
+
+// // int main()
+// // {
+// //     Student s1("jack", 18);
+// //     Student s2(s1);
+// //     Student s3("rose", 17);
+// //     s1 = s3;
+
+// //     return 0;
+// // }
+
+
+
+// class Person
+// {
+// public:
+//     string _name;
+//     static int _count;
 // };
+
+// int Person::_count = 0;
+
+// class Student : public Person
+// {
+// protected:
+//     int _stuNum;
+// };
+
+
 
 // int main()
 // {
-//     Student s1("jack", 18);
-//     Student s2(s1);
-//     Student s3("rose", 17);
-//     s1 = s3;
+//     Person p;
+//     Student s;
+
+//     // 这里的运行结果可以看到非静态成员_name的地址是不一样的
+//     // 说明派生类继承下来了，父派生类对象各有一份
+//     cout << &p._name << endl;
+//     cout << &s._name << endl;
+
+//     // 这里的运行结果可以看到静态成员_count的地址是一样的
+//     // 说明派生类和基类共用同一份静态成员
+//     cout << &p._count << endl;
+//     cout << &s._count << endl;
+
+// 	cout << Person::_count << endl;
+//     cout << Student::_count << endl;
+
+// 	Person::_count++;
+// 	Student::_count++;
+// 	Student::_count++;
+
+//     // 公有的情况下，父派生类指定类域都可以访问静态成员
+//     cout << Person::_count << endl;
+//     cout << Student::_count << endl;
 
 //     return 0;
 // }
 
-
-
-class Person
-{
-public:
-    string _name;
-    static int _count;
-};
-
-int Person::_count = 0;
-
-class Student : public Person
-{
-protected:
-    int _stuNum;
-};
-
-
-
+class Base1 { public: int _b1; };
+class Base2 { public: int _b2; };
+class Derive : public Base1, public Base2 { public: int _d; };
 int main()
 {
-    Person p;
-    Student s;
-
-    // 这里的运行结果可以看到非静态成员_name的地址是不一样的
-    // 说明派生类继承下来了，父派生类对象各有一份
-    cout << &p._name << endl;
-    cout << &s._name << endl;
-
-    // 这里的运行结果可以看到静态成员_count的地址是一样的
-    // 说明派生类和基类共用同一份静态成员
-    cout << &p._count << endl;
-    cout << &s._count << endl;
-
-	cout << Person::_count << endl;
-    cout << Student::_count << endl;
-
-	Person::_count++;
-	Student::_count++;
-	Student::_count++;
-
-    // 公有的情况下，父派生类指定类域都可以访问静态成员
-    cout << Person::_count << endl;
-    cout << Student::_count << endl;
-
+    Derive d;
+    Base1* p1 = &d;
+    Base2* p2 = &d;
+    Derive* p3 = &d;
+    cout<< p1 << endl;
+    cout<< p2 << endl;
+    cout<< p3 << endl;  
     return 0;
 }
