@@ -321,17 +321,131 @@ using namespace std;
 
 
 
-class Base1 { public: int _b1; };
-class Base2 { public: int _b2; };
-class Derive : public Base1, public Base2 { public: int _d; };
+// class Base1 { public: int _b1; };
+// class Base2 { public: int _b2; };
+// class Derive : public Base1, public Base2 { public: int _d; };
+// int main()
+// {
+//     Derive d;
+//     Base1* p1 = &d;
+//     Base2* p2 = &d;
+//     Derive* p3 = &d;
+//     cout<< p1 << endl;
+//     cout<< p2 << endl;
+//     cout<< p3 << endl;  
+//     return 0;
+// }
+
+
+// class Person
+// {
+// public:
+//     virtual void BuyTicket() { cout << "买票 - 全价" << endl; }
+// };
+// class Student : public Person
+// {
+// public:
+//     virtual void BuyTicket() { cout << "买票 - 打折" << endl; }
+// };
+// void Func(Person* ptr)
+// {
+//     // 这里可以看到虽然都是Person指针Ptr在调用BuyTicket
+//     // 但是跟ptr没关系，而是由ptr指向的对象决定的。
+//     ptr->BuyTicket();
+// }
+// int main()
+// {
+//     Person ps;
+//     Student st;
+//     Func(&ps);
+//     Func(&st);
+//     return 0;
+// }
+// class Animal
+// {
+// public:
+//     virtual void talk() const {}
+// };
+// class Dog : public Animal
+// {
+// public:
+//     virtual void talk() const
+//     {
+//         std::cout << "汪汪" << std::endl;
+//     }
+// };
+// class Cat : public Animal
+// {
+// public:
+//     virtual void talk() const
+//     {
+//         std::cout << "(>^ω^<)喵" << std::endl;
+//     }
+// };
+// void letsHear(const Animal& animal)
+// {
+//     animal.talk();
+// }
+// int main()
+// {
+//     Cat cat;
+//     Dog dog;
+//     letsHear(cat);
+//     letsHear(dog);
+//     return 0;
+// }
+
+
+// class A
+// {
+// public:
+//     virtual void func(int val = 1){ std::cout<<"A->"<< val <<std::endl;}
+//     virtual void test(){ func();}
+// };
+// class B : public A
+// {
+// public:
+//     void func(int val = 0){ std::cout<<"B->"<< val <<std::endl; }
+// };
+// int main(int argc,char* argv[])
+// {
+//     B*p = new B;
+//     p->test();
+//     return 0;
+// }
+
+
+class A
+{
+public:
+    virtual ~A()
+    {
+        cout << "~A()" << endl;
+    }
+};
+class B : public A {
+public:
+    B()
+    {
+        cout << "B()" << endl;
+    }
+    ~B()
+    {
+        cout << "~B()->delete:"<<_p<< endl;
+        delete _p;
+    }
+protected:
+    int* _p = new int[10];
+};
+// 只有派生类Student的析构函数重写了Person的析构函数，
+//下面的delete对象调用析构函数，才能构成多态，才能保证p1和p2指向的对象正确的调用析构函数。
 int main()
 {
-    Derive d;
-    Base1* p1 = &d;
-    Base2* p2 = &d;
-    Derive* p3 = &d;
-    cout<< p1 << endl;
-    cout<< p2 << endl;
-    cout<< p3 << endl;  
+    A* p1 = new A;
+    A* p2 = new B;
+    delete p1;
+    delete p2;
+    //如果基类的析构函数不是虚函数，那么在通过基类指针删除派生类对象时，
+    //只会调用基类的析构函数，而不会调用派生类的析构函数。
     return 0;
 }

@@ -414,17 +414,135 @@ using namespace std;
 //     return 0;
 // }
 
-class Base1 { public: int _b1; };
-class Base2 { public: int _b2; };
-class Derive : public Base1, public Base2 { public: int _d; };
-int main()
-{
-    Derive d;
-    Base1* p1 = &d;
-    Base2* p2 = &d;
-    Derive* p3 = &d;
-    cout<< p1 << endl;
-    cout<< p2 << endl;
-    cout<< p3 << endl;  
-    return 0;
-}
+// class Base1 { public: int _b1; };
+// class Base2 { public: int _b2; };
+// class Derive : public Base1, public Base2 { public: int _d; };
+// int main()
+// {
+//     Derive d;
+//     Base1* p1 = &d;
+//     Base2* p2 = &d;
+//     Derive* p3 = &d;
+//     cout<< p1 << endl;
+//     cout<< p2 << endl;
+//     cout<< p3 << endl;  
+//     return 0;
+// }
+
+
+// class Person
+// {
+// public:
+//     Person(const char* name = "peter")
+//         : _name(name)
+//     {
+//         cout << "Person()" << endl;
+//     }
+
+//     Person(const Person& p)
+//         : _name(p._name)
+//     {
+//         cout << "Person(const Person& p)" << endl;
+//     }
+
+//     Person& operator=(const Person& p)
+//     {
+//         cout << "Person operator=(const Person& p)" << endl;
+//         if (this != &p)
+//         {
+//             _name = p._name;
+//         }
+//         return *this;
+//     }
+
+//     ~Person()
+//     {
+//         cout << "~Person()" << endl;
+//     }
+// protected:
+//     string _name; // 姓名
+// };
+
+// class Student : public Person
+// {
+// public:
+//     Student(const char* name, int num)
+//         : Person(name)
+//         , _num(num)
+//     {
+//         cout << "Student()" << endl;
+//     }
+
+//     Student(const Student& s)
+//         : Person(s)
+//         , _num(s._num)
+//     {
+//         cout << "Student(const Student& s)" << endl;
+//     }
+
+//     Student& operator=(const Student& s)
+//     {
+//         cout << "Student& operator= (const Student& s)" << endl;
+//         if (this != &s)
+//         {
+//             // 构成隐藏，所以需要显示调用
+//             Person::operator=(s);
+//             _num = s._num;
+//         }
+//         return *this;
+//     }
+
+//     ~Student()
+//     {
+//         cout << "~Student()" << endl;
+//     }
+// protected:
+//     int _num; // 学号
+// };
+
+// int main()
+// {
+//     Student s1("jack", 18);
+//     Student s2(s1);
+//     Student s3("rose", 17);
+//     s1 = s3;
+
+//     return 0;
+// }
+
+
+// class A
+// {
+// public:
+//     void fun()
+//     {
+//         cout << "func()" << endl;
+//     }
+// };
+
+// class B : public A
+// {
+// public:
+//     void fun(int i)
+//     {
+//         cout << "func(int i)" << i << endl;
+//     }
+
+//     void pr ()
+//     {
+//         cout<< "pr()" << endl;
+//     }
+// };
+
+// int main()
+// {
+//     A* a=new B;
+
+//     a->pr();
+
+//     B b;
+//     b.fun(10);
+    
+
+//     return 0;
+// };
