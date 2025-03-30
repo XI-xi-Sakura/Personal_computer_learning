@@ -2,8 +2,8 @@
 SRC = $(wildcard *.cpp)
 # 将 .cpp 文件转换为 .o 文件
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
-# 最终要生成的可执行文件，将每个 .cpp 文件对应一个可执行文件
-TARGETS = $(patsubst %.cpp, %, $(SRC))
+# 最终要生成的可执行文件
+TARGET = main
 
 # 默认目标，生成可执行文件
 all: $(TARGET)
