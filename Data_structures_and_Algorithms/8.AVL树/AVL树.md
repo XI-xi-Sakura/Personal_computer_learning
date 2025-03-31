@@ -177,7 +177,7 @@ void RotateR(Node* parent)
 
     // 需要注意除了要修改孩子指针指向，还是修改父亲
     parent->_left = subLR;
-    if (subLR)
+    if (subLR) //防止subLR为空，空指针解引用
         subLR->_parent = parent;
 
     Node* parentParent = parent->_parent;
