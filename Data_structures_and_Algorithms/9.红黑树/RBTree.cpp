@@ -121,7 +121,10 @@ struct RBTreeIterator
         return _node != s._node;
     }
 };
-
+//因为RBTree实现了泛型不知道T参数导致是K，还是pair<K, V>，那么insert内部进⾏插⼊逻辑⽐较时，
+//就没办法进⾏⽐较，因为pair的默认⽀持的是key和value⼀起参与⽐较，我们需要时的任何时候只⽐较key，
+//所以我们在map和set层分别实现⼀个MapKeyOfT和SetKeyOfT的仿函数传给RBTree的KeyOfT，
+//然后RBTree中通过KeyOfT仿函数取出T类型对象中的key，再进⾏⽐较
 template <class K, class T, class KeyOfT>   //K为键值类型，T为节点类型，KeyOfT为获取键值的仿函数
 class RBTree
 {
