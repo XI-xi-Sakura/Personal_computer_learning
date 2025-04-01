@@ -75,6 +75,17 @@ struct RBTreeIterator
     
     Self &operator--()
     {
+        if (_node == nullptr) // end()
+		{
+			// --end()，特殊处理，走到中序最后一个节点，整棵树的最右节点
+			Node* rightMost = _root;
+			while (rightMost && rightMost->_right)
+			{
+				rightMost = rightMost->_right;
+			}
+
+			_node = rightMost;
+		}
         if (_node->_left)// 左不为空，左子树最右节点就是中序下一个
         {
             Node *rightMost = _node->_left;
