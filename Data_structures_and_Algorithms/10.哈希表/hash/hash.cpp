@@ -350,6 +350,7 @@ namespace hash_bucket
 		pair<Iterator, bool> Insert(const T& data)
 		{
 			KeyOfT kot;
+			
 			Iterator it = Find(kot(data));
 			if (it != End())
 				return make_pair(it, false);
