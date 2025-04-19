@@ -18,7 +18,7 @@ const int envnum = 64;
 char *gargv[argvnum];
 int gargc = 0;
 
-// 全局的变量
+// 全局的变量-退出码
 int lastcode = 0;
 
 // 我的系统的环境变量
@@ -39,15 +39,17 @@ char pwdenv[basesize];
 int redir = NoneRedir;
 char *filename = nullptr;
 
-// "    "file.txt
-#define TrimSpace(pos)        \
-    do                        \
-    {                         \
-        while (isspace(*pos)) \
-        {                     \
-            pos++;            \
-        }                     \
-    } while (0)
+// 检查给定的字符是否是空白字符
+//  "    "file.txt
+
+#define TrimSpace(pos)          \
+    do                          \
+    {                           \
+        while (isspace((*pos))) \
+        {                       \
+            pos++;              \
+        }                       \
+    } while (0) // 消除文件名前空格符
 
 string GetUserName()
 {
@@ -61,12 +63,16 @@ string GetHostName()
     return hostname.empty() ? "None" : hostname;
 }
 
-string GetPwd()
+string GetPwd()           //环境变量是需要维护的，需要更新环境变量
 {
-    if (nullptr == getcwd(pwd, sizeof(pwd)))
+    if (nullptr == getcwd(pwd, sizeof(pwd))) // getcwd 是一个标准库函数，用于获取当前工作目录的绝对路径。
         return "None";
+
+    // 将格式化的字符串输出到指定的字符数组中，并且可以指定输出的最大长度，从而避免缓冲区溢出的问题。
     snprintf(pwdenv, sizeof(pwdenv), "PWD=%s", pwd);
+
     putenv(pwdenv); // PWD=XXX
+
     return pwd;
 
     // string pwd = getenv("PWD");
@@ -173,7 +179,7 @@ void ParseCommandLine(char command_buffer[], int len) // 3. 分析命令
 
     // "ls -a -l -n"
     const char *sep = " ";
-    gargv[gargc++] = strtok(command_buffer, sep);
+    gargv[gargc++] = strtok(command_buffer, sep); // strtok将一个字符串按照指定的分隔符分割成多个子字符串
     // =是刻意写的
     while ((bool)(gargv[gargc++] = strtok(nullptr, sep)))
         ;
@@ -188,9 +194,11 @@ void debug()
         printf("argv[%d]: %s\n", i, gargv[i]);
     }
 }
+
 // 在shell中
 // 有些命令，必须由子进程来执行
 // 有些命令，不能由子进程执行，要由shell自己执行 --- 内建命令 built command
+
 bool ExecuteCommand() // 4. 执行命令
 {
     // 让子进程进行执行
@@ -237,15 +245,17 @@ void AddEnv(const char *item)
     strncpy(genv[index], item, strlen(item) + 1);
     genv[++index] = nullptr;
 }
-// shell自己执行命令，本质是shell调用自己的函数
-bool CheckAndExecBuiltCommand()
+
+
+// 内建命令 ：shell自己执行命令，本质是shell调用自己的函数
+bool CheckAndExecBuiltCommand() // 检测内建命令
 {
     if (strcmp(gargv[0], "cd") == 0)
     {
         // 内建命令
         if (gargc == 2)
         {
-            chdir(gargv[1]);
+            chdir(gargv[1]);  //改变当前进程的工作目录。
             lastcode = 0;
         }
         else
@@ -254,7 +264,7 @@ bool CheckAndExecBuiltCommand()
         }
         return true;
     }
-    else if (strcmp(gargv[0], "export") == 0)
+    else if (strcmp(gargv[0], "export") == 0) //把变量设置为环境变量
     {
         // export也是内建命令
         if (gargc == 2)
