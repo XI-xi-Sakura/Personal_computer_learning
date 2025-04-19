@@ -318,10 +318,12 @@ bool CheckAndExecBuiltCommand() // 检测内建命令
 }
 
 // 作为一个shell，获取环境变量应该从系统的配置来
-// 我们今天就直接从父shell中获取环境变量
+// 直接从父shell中获取环境变量
 void InitEnv()
 {
+
     extern char **environ;
+
     int index = 0;
     while (environ[index])
     {
