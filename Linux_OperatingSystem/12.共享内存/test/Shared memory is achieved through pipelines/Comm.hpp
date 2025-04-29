@@ -13,6 +13,8 @@
 
 using namespace std;
 
+// 日志
+
 #define Debug 0
 #define Notice 1
 #define Warning 2
@@ -27,6 +29,10 @@ std::ostream &Log(std::string message, int level)
     std::cout << " | " << (unsigned)time(nullptr) << " | " << msg[level] << " | " << message;
     return std::cout;
 }
+
+
+
+
 #define PATH_NAME "/home/hyb"
 #define PROJ_ID 0x66
 #define SHM_SIZE 4096 // 共享内存的大小，最好是页(PAGE: 4096)的整数倍
@@ -47,6 +53,8 @@ public:
         Log("remove fifo success", Notice) << "\n";
     }
 };
+
+
 #define READ O_RDONLY
 #define WRITE O_WRONLY
 int OpenFIFO(std::string pathname, int flags)
