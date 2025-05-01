@@ -12,7 +12,7 @@
 介绍了C++11的新特性，包括auto关键字、lambda表达式、智能指针等。
 
 
-个人博客网址：https://blog.csdn.net/Sakura_ding?spm=1010.2135.3001.5343
+个人博客网址：https://blog.csdn.net/Sakura_ding
 
 github仓库：https://github.com/XI-xi-Sakura
 
