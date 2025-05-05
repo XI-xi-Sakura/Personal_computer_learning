@@ -124,7 +124,7 @@ namespace LogMudule
         }
         ~FileLogStrategy()
         {
-            
+
         }
         void SyncLog(const std::string &message)
         {
