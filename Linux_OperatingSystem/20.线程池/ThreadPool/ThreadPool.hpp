@@ -154,8 +154,10 @@ namespace ThreadPoolModule
 //             // 2. 队中不一定有数据
 //             while (_task_queue.empty() && _isrunning)
 //             {
-//                 _cond.Wait(_mutex);
-//                 _waitnum++;
+//
+//                  _waitnum++;
+//                  _cond.Wait(_mutex);
+//
 //                 _waitnum--;
 //             }
 //             // 2.1 如果线程池已经退出了 && 任务队列是空的
@@ -173,7 +175,7 @@ namespace ThreadPoolModule
 
 //             LOG(LogLevel::DEBUG) << name << " get a task";
 //             // 4. 处理任务，这个任务属于线程独占的任务
-//             task();
+//             t();
 //         }
 //     }
 // public:
