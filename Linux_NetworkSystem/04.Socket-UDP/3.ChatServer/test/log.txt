@@ -1,0 +1,4 @@
+hello cout
+hello printf
+hello cerr
+hello fprintf
