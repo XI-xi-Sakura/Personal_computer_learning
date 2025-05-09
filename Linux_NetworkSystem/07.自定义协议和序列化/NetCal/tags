@@ -1,0 +1,213 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+Addr	InetAddr.hpp	/^    std::string Addr()$/;"	f	class:InetAddr	typeref:typename:std::string
+BACKLOG	TcpServer.hpp	/^#define BACKLOG /;"	d
+BIND_ERR	Common.hpp	/^    BIND_ERR,$/;"	e	enum:__anon2fc884440103
+CONV	Common.hpp	/^#define CONV(/;"	d
+Calculator	Calculator.hpp	/^    Calculator()$/;"	f	class:Calculator
+Calculator	Calculator.hpp	/^class Calculator$/;"	c
+Code	Protocol.hpp	/^    int Code() const { return _code; }$/;"	f	class:Response	typeref:typename:int
+Cond	Cond.hpp	/^        Cond()$/;"	f	class:CondModule::Cond
+Cond	Cond.hpp	/^    class Cond$/;"	c	namespace:CondModule
+CondModule	Cond.hpp	/^namespace CondModule$/;"	n
+ConsoleLogStrategy	Log.hpp	/^        ConsoleLogStrategy()$/;"	f	class:LogModule::ConsoleLogStrategy
+ConsoleLogStrategy	Log.hpp	/^    class ConsoleLogStrategy : public LogStrategy$/;"	c	namespace:LogModule
+CurrentTime	Log.hpp	/^    std::string CurrentTime()$/;"	f	namespace:LogModule	typeref:typename:std::string
+DEBUG	Log.hpp	/^        DEBUG = 1,$/;"	e	enum:LogModule::LogLevel
+Daemon	Daemon.hpp	/^void Daemon(bool ischdir, bool isclose)$/;"	f	typeref:typename:void
+Decode	Protocol.hpp	/^bool Decode(std::string &package, std::string *content)$/;"	f	typeref:typename:bool
+DefaultTest	ThreadPool.hpp	/^    void DefaultTest()$/;"	f	namespace:ThreadPoolModule	typeref:typename:void
+Deserialize	Protocol.hpp	/^    bool Deserialize(std::string &in_string)$/;"	f	class:Request	typeref:typename:bool
+Deserialize	Protocol.hpp	/^    bool Deserialize(std::string &in_string)$/;"	f	class:Response	typeref:typename:bool
+Detach	Thread.hpp	/^        void Detach()$/;"	f	class:ThreadModule::Thread	typeref:typename:void
+Die	Common.hpp	/^#define Die(/;"	d
+ENABLE_CONSOLE_LOG	Log.hpp	/^#define ENABLE_CONSOLE_LOG(/;"	d
+ENABLE_FILE_LOG	Log.hpp	/^#define ENABLE_FILE_LOG(/;"	d
+ERROR	Log.hpp	/^        ERROR,$/;"	e	enum:LogModule::LogLevel
+EnableConsoleLog	Log.hpp	/^        void EnableConsoleLog()$/;"	f	class:LogModule::Logger	typeref:typename:void
+EnableDetach	Thread.hpp	/^        void EnableDetach() { _joinable = false; }$/;"	f	class:ThreadModule::Thread	typeref:typename:void
+EnableFileLog	Log.hpp	/^        void EnableFileLog()$/;"	f	class:LogModule::Logger	typeref:typename:void
+Encode	Protocol.hpp	/^bool Encode(std::string &message)$/;"	f	typeref:typename:bool
+Entry	TcpServer.cc	/^    std::string Entry(std::string &package)$/;"	f	class:Parse	typeref:typename:std::string	file:
+Equeue	ThreadPool.hpp	/^        void Equeue(T in)$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:void
+Execute	Calculator.hpp	/^    Response Execute(const Request &req)$/;"	f	class:Calculator	typeref:typename:Response
+FATAL	Log.hpp	/^        FATAL$/;"	e	enum:LogModule::LogLevel
+FileLogStrategy	Log.hpp	/^        FileLogStrategy(const std::string &logpath = defaultlogpath, const std::string &logname /;"	f	class:LogModule::FileLogStrategy
+FileLogStrategy	Log.hpp	/^    class FileLogStrategy : public LogStrategy$/;"	c	namespace:LogModule
+HandlerRequest	TcpServer.hpp	/^    void HandlerRequest(int sockfd) \/\/ TCP也是全双工通信的$/;"	f	class:TcpServer	typeref:typename:void
+HandlerTask	ThreadPool.hpp	/^        void HandlerTask(std::string name)$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:void
+INFO	Log.hpp	/^        INFO,$/;"	e	enum:LogModule::LogLevel
+InetAddr	InetAddr.hpp	/^    InetAddr()$/;"	f	class:InetAddr
+InetAddr	InetAddr.hpp	/^    InetAddr(const struct sockaddr_in &addr) : _net_addr(addr)$/;"	f	class:InetAddr
+InetAddr	InetAddr.hpp	/^    InetAddr(uint16_t port) : _port(port), _ip("")$/;"	f	class:InetAddr
+InetAddr	InetAddr.hpp	/^class InetAddr$/;"	c
+InitServer	TcpServer.hpp	/^    void InitServer()$/;"	f	class:TcpServer	typeref:typename:void
+Ip	InetAddr.hpp	/^    std::string Ip() { return _ip; }$/;"	f	class:InetAddr	typeref:typename:std::string
+IpNet2Host	InetAddr.hpp	/^    void IpNet2Host()$/;"	f	class:InetAddr	typeref:typename:void
+IsEmpty	ThreadPool.hpp	/^        bool IsEmpty() { return _taskq.empty(); }$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:bool
+IsJoinable	Thread.hpp	/^        bool IsJoinable() { return _joinable; }$/;"	f	class:ThreadModule::Thread	typeref:typename:bool
+Join	Thread.hpp	/^        bool Join()$/;"	f	class:ThreadModule::Thread	typeref:typename:bool
+LISTEN_ERR	Common.hpp	/^    LISTEN_ERR$/;"	e	enum:__anon2fc884440103
+LOG	Log.hpp	/^#define LOG(/;"	d
+Level2String	Log.hpp	/^    std::string Level2String(LogLevel level)$/;"	f	namespace:LogModule	typeref:typename:std::string
+Lock	Mutex.hpp	/^        void Lock()$/;"	f	class:LockModule::Mutex	typeref:typename:void
+LockGuard	Mutex.hpp	/^        LockGuard(Mutex &mtx):_mtx(mtx)$/;"	f	class:LockModule::LockGuard
+LockGuard	Mutex.hpp	/^    class LockGuard$/;"	c	namespace:LockModule
+LockModule	Mutex.hpp	/^namespace LockModule$/;"	n
+LockPtr	Mutex.hpp	/^        pthread_mutex_t *LockPtr()$/;"	f	class:LockModule::Mutex	typeref:typename:pthread_mutex_t *
+LogLevel	Log.hpp	/^    enum class LogLevel$/;"	g	namespace:LogModule
+LogMessage	Log.hpp	/^            LogMessage(LogLevel level, const std::string &filename, int line, Logger &logger)$/;"	f	class:LogModule::Logger::LogMessage
+LogMessage	Log.hpp	/^        class LogMessage$/;"	c	class:LogModule::Logger
+LogModule	Log.hpp	/^namespace LogModule$/;"	n
+LogStrategy	Log.hpp	/^    class LogStrategy$/;"	c	namespace:LogModule
+Logger	Log.hpp	/^        Logger()$/;"	f	class:LogModule::Logger
+Logger	Log.hpp	/^    class Logger$/;"	c	namespace:LogModule
+Mutex	Mutex.hpp	/^        Mutex()$/;"	f	class:LockModule::Mutex
+Mutex	Mutex.hpp	/^    class Mutex$/;"	c	namespace:LockModule
+NEW	Thread.hpp	/^        NEW,$/;"	e	enum:ThreadModule::TSTATUS
+Name	Thread.hpp	/^        std::string Name() {return _name;}$/;"	f	class:ThreadModule::Thread	typeref:typename:std::string
+NetAddr	InetAddr.hpp	/^    struct sockaddr *NetAddr() { return CONV(&_net_addr); }$/;"	f	class:InetAddr	typeref:struct:sockaddr *
+NetAddrLen	InetAddr.hpp	/^    socklen_t NetAddrLen() { return sizeof(_net_addr); }$/;"	f	class:InetAddr	typeref:typename:socklen_t
+Notify	Cond.hpp	/^        void Notify()$/;"	f	class:CondModule::Cond	typeref:typename:void
+NotifyAll	Cond.hpp	/^        void NotifyAll()$/;"	f	class:CondModule::Cond	typeref:typename:void
+Oper	Protocol.hpp	/^    char Oper() const { return _oper; }$/;"	f	class:Request	typeref:typename:char
+Parse	TcpServer.cc	/^    Parse(cal_fun c) : _cal(c)$/;"	f	class:Parse	file:
+Parse	TcpServer.cc	/^class Parse$/;"	c	file:
+Port	InetAddr.hpp	/^    uint16_t Port() { return _port; }$/;"	f	class:InetAddr	typeref:typename:uint16_t
+PortNet2Host	InetAddr.hpp	/^    void PortNet2Host()$/;"	f	class:InetAddr	typeref:typename:void
+Print	Protocol.hpp	/^    void Print()$/;"	f	class:Request	typeref:typename:void
+ROOT	Daemon.hpp	/^#define ROOT /;"	d
+RUNNING	Thread.hpp	/^        RUNNING,$/;"	e	enum:ThreadModule::TSTATUS
+Request	Protocol.hpp	/^    Request() : _x(0), _y(0), _oper(0)$/;"	f	class:Request
+Request	Protocol.hpp	/^    Request(int x, int y, char oper) : _x(x), _y(y), _oper(oper)$/;"	f	class:Request
+Request	Protocol.hpp	/^class Request$/;"	c
+Response	Protocol.hpp	/^    Response() : _result(0), _code(0)$/;"	f	class:Response
+Response	Protocol.hpp	/^    Response(int result, int code) : _result(result), _code(code)$/;"	f	class:Response
+Response	Protocol.hpp	/^class Response$/;"	c
+Result	Protocol.hpp	/^    int Result() const { return _result; }$/;"	f	class:Response	typeref:typename:int
+Routine	Thread.hpp	/^        static void *Routine(void *args)$/;"	f	class:ThreadModule::Thread	typeref:typename:void *
+SOCKET_ERR	Common.hpp	/^    SOCKET_ERR,$/;"	e	enum:__anon2fc884440103
+STOP	Thread.hpp	/^        STOP$/;"	e	enum:ThreadModule::TSTATUS
+Sep	Protocol.hpp	/^const std::string Sep = "\\r\\n";$/;"	v	typeref:typename:const std::string
+Serialize	Protocol.hpp	/^    bool Serialize(std::string &out_string)$/;"	f	class:Request	typeref:typename:bool
+Serialize	Protocol.hpp	/^    bool Serialize(std::string &out_string)$/;"	f	class:Response	typeref:typename:bool
+SetCode	Protocol.hpp	/^    void SetCode(int c) {_code = c;}$/;"	f	class:Response	typeref:typename:void
+SetResult	Protocol.hpp	/^    void SetResult(int res) { _result = res;}$/;"	f	class:Response	typeref:typename:void
+Start	TcpServer.hpp	/^    void Start()$/;"	f	class:TcpServer	typeref:typename:void
+Start	Thread.hpp	/^        bool Start()$/;"	f	class:ThreadModule::Thread	typeref:typename:bool
+Start	ThreadPool.hpp	/^        void Start()$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:void
+Stop	TcpServer.hpp	/^    void Stop()$/;"	f	class:TcpServer	typeref:typename:void
+Stop	Thread.hpp	/^        bool Stop()$/;"	f	class:ThreadModule::Thread	typeref:typename:bool
+Stop	ThreadPool.hpp	/^        void Stop()$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:void
+SyncLog	Log.hpp	/^        void SyncLog(const std::string &message)$/;"	f	class:LogModule::ConsoleLogStrategy	typeref:typename:void
+SyncLog	Log.hpp	/^        void SyncLog(const std::string &message)$/;"	f	class:LogModule::FileLogStrategy	typeref:typename:void
+TSTATUS	Thread.hpp	/^    enum class TSTATUS$/;"	g	namespace:ThreadModule
+TcpServer	TcpServer.hpp	/^    TcpServer(handler_t handler, int port = gport) : _handler(handler) ,_port(port), _isrunning(/;"	f	class:TcpServer
+TcpServer	TcpServer.hpp	/^class TcpServer$/;"	c
+Thread	Thread.hpp	/^        Thread(func_t func) : _func(func), _status(TSTATUS::NEW), _joinable(true)$/;"	f	class:ThreadModule::Thread
+Thread	Thread.hpp	/^    class Thread$/;"	c	namespace:ThreadModule
+ThreadData	TcpServer.hpp	/^    struct ThreadData$/;"	s	class:TcpServer
+ThreadEntry	TcpServer.hpp	/^    static void *ThreadEntry(void *args)$/;"	f	class:TcpServer	typeref:typename:void *
+ThreadModule	Thread.hpp	/^namespace ThreadModule$/;"	n
+ThreadPool	ThreadPool.hpp	/^        ThreadPool(int num = defaultnum) : _num(num), _wait_num(0), _isrunning(false)$/;"	f	class:ThreadPoolModule::ThreadPool
+ThreadPool	ThreadPool.hpp	/^    class ThreadPool$/;"	c	namespace:ThreadPoolModule
+ThreadPoolModule	ThreadPool.hpp	/^namespace ThreadPoolModule$/;"	n
+USAGE_ERR	Common.hpp	/^    USAGE_ERR = 1,$/;"	e	enum:__anon2fc884440103
+Unlock	Mutex.hpp	/^        void Unlock()$/;"	f	class:LockModule::Mutex	typeref:typename:void
+WARNING	Log.hpp	/^        WARNING,$/;"	e	enum:LogModule::LogLevel
+Wait	Cond.hpp	/^        void Wait(Mutex &lock) \/\/ 让我们的线程释放曾经持有的锁！$/;"	f	class:CondModule::Cond	typeref:typename:void
+Wait	ThreadPool.hpp	/^        void Wait()$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:void
+X	Protocol.hpp	/^    int X() const { return _x; }$/;"	f	class:Request	typeref:typename:int
+Y	Protocol.hpp	/^    int Y() const { return _y; }$/;"	f	class:Request	typeref:typename:int
+_THREAD_HPP__	Thread.hpp	/^#define _THREAD_HPP__$/;"	d
+__anon1c5b66170102	TcpServer.cc	/^    Parse myparse([&mycal](const Request &req){$/;"	f	function:main	file:
+__anon1c5b66170202	TcpServer.cc	/^    std::unique_ptr<TcpServer> tsvr = std::make_unique<TcpServer>([&myparse](std::string &packag/;"	f	function:main	file:
+__anon2fc884440103	Common.hpp	/^{$/;"	g
+__anona7c840590102	TcpServer.hpp	/^                                                      { this->HandlerRequest(sockfd); });$/;"	f	function:TcpServer::Start	file:
+_cal	TcpServer.cc	/^    cal_fun _cal;$/;"	m	class:Parse	typeref:typename:cal_fun	file:
+_code	Protocol.hpp	/^    int _code;   \/\/ 出错码，0,1,2,3,4$/;"	m	class:Response	typeref:typename:int
+_cond	Cond.hpp	/^        pthread_cond_t _cond;$/;"	m	class:CondModule::Cond	typeref:typename:pthread_cond_t
+_cond	ThreadPool.hpp	/^        Cond _cond;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:Cond
+_currtime	Log.hpp	/^            std::string _currtime; \/\/ 当前日志的时间$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:std::string
+_filename	Log.hpp	/^            std::string _filename; \/\/ 源文件名称$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:std::string
+_func	Thread.hpp	/^        func_t _func;$/;"	m	class:ThreadModule::Thread	typeref:typename:func_t
+_handler	TcpServer.hpp	/^    handler_t _handler;$/;"	m	class:TcpServer	typeref:typename:handler_t
+_ip	InetAddr.hpp	/^    std::string _ip;$/;"	m	class:InetAddr	typeref:typename:std::string
+_isrunning	TcpServer.hpp	/^    bool _isrunning;$/;"	m	class:TcpServer	typeref:typename:bool
+_isrunning	ThreadPool.hpp	/^        bool _isrunning;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:bool
+_joinable	Thread.hpp	/^        bool _joinable; \/\/ 是否是分离的，默认不是$/;"	m	class:ThreadModule::Thread	typeref:typename:bool
+_level	Log.hpp	/^            LogLevel _level;       \/\/ 日志等级$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:LogLevel
+_line	Log.hpp	/^            int _line;             \/\/ 日志所在的行号$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:int
+_listensockfd	TcpServer.hpp	/^    int _listensockfd; \/\/ 监听socket$/;"	m	class:TcpServer	typeref:typename:int
+_lock	Log.hpp	/^        Mutex _lock;$/;"	m	class:LogModule::ConsoleLogStrategy	typeref:typename:Mutex
+_lock	Log.hpp	/^        Mutex _lock;$/;"	m	class:LogModule::FileLogStrategy	typeref:typename:Mutex
+_lock	Mutex.hpp	/^        pthread_mutex_t _lock;$/;"	m	class:LockModule::Mutex	typeref:typename:pthread_mutex_t
+_lock	ThreadPool.hpp	/^        Mutex _lock;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:Mutex
+_logger	Log.hpp	/^            Logger &_logger;       \/\/ 负责根据不同的策略进行刷新$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:Logger &
+_loginfo	Log.hpp	/^            std::string _loginfo;  \/\/ 一条完整的日志记录$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:std::string
+_logname	Log.hpp	/^        std::string _logname;$/;"	m	class:LogModule::FileLogStrategy	typeref:typename:std::string
+_logpath	Log.hpp	/^        std::string _logpath;$/;"	m	class:LogModule::FileLogStrategy	typeref:typename:std::string
+_mtx	Mutex.hpp	/^        Mutex &_mtx;$/;"	m	class:LockModule::LockGuard	typeref:typename:Mutex &
+_name	Thread.hpp	/^        std::string _name;$/;"	m	class:ThreadModule::Thread	typeref:typename:std::string
+_net_addr	InetAddr.hpp	/^    struct sockaddr_in _net_addr;$/;"	m	class:InetAddr	typeref:struct:sockaddr_in
+_num	ThreadPool.hpp	/^        int _num;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:int
+_oper	Protocol.hpp	/^    char _oper;$/;"	m	class:Request	typeref:typename:char
+_pid	Log.hpp	/^            pid_t _pid;            \/\/ 进程pid$/;"	m	class:LogModule::Logger::LogMessage	typeref:typename:pid_t
+_pid	Thread.hpp	/^        pid_t _pid;$/;"	m	class:ThreadModule::Thread	typeref:typename:pid_t
+_port	InetAddr.hpp	/^    uint16_t _port;$/;"	m	class:InetAddr	typeref:typename:uint16_t
+_port	TcpServer.hpp	/^    uint16_t _port;$/;"	m	class:TcpServer	typeref:typename:uint16_t
+_result	Protocol.hpp	/^    int _result; \/\/ 结果$/;"	m	class:Response	typeref:typename:int
+_status	Thread.hpp	/^        TSTATUS _status;$/;"	m	class:ThreadModule::Thread	typeref:typename:TSTATUS
+_strategy	Log.hpp	/^        std::shared_ptr<LogStrategy> _strategy; \/\/ 日志刷新的策略方案$/;"	m	class:LogModule::Logger	typeref:typename:std::shared_ptr<LogStrategy>
+_taskq	ThreadPool.hpp	/^        std::queue<T> _taskq; \/\/ 临界资源$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:std::queue<T>
+_threads	ThreadPool.hpp	/^        std::vector<thread_t> _threads;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:std::vector<thread_t>
+_tid	Thread.hpp	/^        pthread_t _tid;$/;"	m	class:ThreadModule::Thread	typeref:typename:pthread_t
+_wait_num	ThreadPool.hpp	/^        int _wait_num;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:int
+_x	Protocol.hpp	/^    int _x;$/;"	m	class:Request	typeref:typename:int
+_y	Protocol.hpp	/^    int _y;$/;"	m	class:Request	typeref:typename:int
+all	Makefile	/^all:server_tcp client_tcp$/;"	t
+cal_fun	TcpServer.cc	/^using cal_fun = std::function<Response(const Request &req)>;$/;"	t	file:
+clean	Makefile	/^clean:$/;"	t
+client_tcp	Makefile	/^client_tcp:TcpClient.cc$/;"	t
+defaultlogname	Log.hpp	/^    const std::string defaultlogname = "log.txt";$/;"	v	namespace:LogModule	typeref:typename:const std::string
+defaultlogpath	Log.hpp	/^    const std::string defaultlogpath = ".\/log\/";$/;"	v	namespace:LogModule	typeref:typename:const std::string
+defaultnum	ThreadPool.hpp	/^    const static int defaultnum = 15;$/;"	v	namespace:ThreadPoolModule	typeref:typename:const int
+devnull	Daemon.hpp	/^#define devnull /;"	d
+func_t	Thread.hpp	/^    using func_t = std::function<void(std::string name)>;$/;"	t	namespace:ThreadModule
+getInstance	ThreadPool.hpp	/^        static ThreadPool<T> *getInstance()$/;"	f	class:ThreadPoolModule::ThreadPool	typeref:typename:ThreadPool<T> *
+gport	TcpServer.hpp	/^static const uint16_t gport = 8082;$/;"	v	typeref:typename:const uint16_t
+handler_t	TcpServer.hpp	/^using handler_t = std::function<std::string(std::string&)>;$/;"	t
+instance	ThreadPool.hpp	/^        static ThreadPool<T> *instance;$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:ThreadPool<T> *
+instance	ThreadPool.hpp	/^    ThreadPool<T> *ThreadPool<T>::instance = NULL;$/;"	m	class:ThreadPoolModule::ThreadPool<T>	typeref:typename:ThreadPool<T> *
+logger	Log.hpp	/^    Logger logger;$/;"	v	namespace:LogModule	typeref:typename:Logger
+main	TcpClient.cc	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
+main	TcpServer.cc	/^int main()$/;"	f	typeref:typename:int
+main	Test.cc	/^int main()$/;"	f	typeref:typename:int
+mutex	ThreadPool.hpp	/^        static Mutex mutex; \/\/ 只用来保护单例$/;"	m	class:ThreadPoolModule::ThreadPool	typeref:typename:Mutex
+mutex	ThreadPool.hpp	/^    Mutex ThreadPool<T>::mutex; \/\/ 只用来保护单例$/;"	m	class:ThreadPoolModule::ThreadPool<T>	typeref:typename:Mutex
+number	Thread.hpp	/^    static int number = 1;$/;"	v	namespace:ThreadModule	typeref:typename:int
+operator ()	Log.hpp	/^        LogMessage operator()(LogLevel level, const std::string &filename, int line)$/;"	f	class:LogModule::Logger	typeref:typename:LogMessage
+operator <<	Log.hpp	/^            LogMessage &operator<<(const T &info)$/;"	f	class:LogModule::Logger::LogMessage	typeref:typename:LogMessage &
+operator ==	InetAddr.hpp	/^    bool operator==(const InetAddr &addr)$/;"	f	class:InetAddr	typeref:typename:bool
+self	TcpServer.hpp	/^        TcpServer *self;$/;"	m	struct:TcpServer::ThreadData	typeref:typename:TcpServer *
+server_tcp	Makefile	/^server_tcp:TcpServer.cc$/;"	t
+sockfd	TcpServer.hpp	/^        int sockfd;$/;"	m	struct:TcpServer::ThreadData	typeref:typename:int
+task_t	TcpServer.hpp	/^    using task_t = std::function<void()>;$/;"	t	class:TcpServer
+thread_t	ThreadPool.hpp	/^    using thread_t = std::shared_ptr<Thread>;$/;"	t	namespace:ThreadPoolModule	typeref:typename:std::shared_ptr<Thread>
+~Calculator	Calculator.hpp	/^    ~Calculator()$/;"	f	class:Calculator
+~Cond	Cond.hpp	/^        ~Cond()$/;"	f	class:CondModule::Cond
+~ConsoleLogStrategy	Log.hpp	/^        ~ConsoleLogStrategy()$/;"	f	class:LogModule::ConsoleLogStrategy
+~FileLogStrategy	Log.hpp	/^        ~FileLogStrategy()$/;"	f	class:LogModule::FileLogStrategy
+~InetAddr	InetAddr.hpp	/^    ~InetAddr()$/;"	f	class:InetAddr
+~LockGuard	Mutex.hpp	/^        ~LockGuard()$/;"	f	class:LockModule::LockGuard
+~LogMessage	Log.hpp	/^            ~LogMessage()$/;"	f	class:LogModule::Logger::LogMessage
+~Logger	Log.hpp	/^        ~Logger() {}$/;"	f	class:LogModule::Logger
+~Mutex	Mutex.hpp	/^        ~Mutex()$/;"	f	class:LockModule::Mutex
+~TcpServer	TcpServer.hpp	/^    ~TcpServer()$/;"	f	class:TcpServer
+~Thread	Thread.hpp	/^        ~Thread()$/;"	f	class:ThreadModule::Thread
+~ThreadPool	ThreadPool.hpp	/^        ~ThreadPool()$/;"	f	class:ThreadPoolModule::ThreadPool
