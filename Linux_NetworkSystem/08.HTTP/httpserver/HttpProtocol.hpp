@@ -86,7 +86,7 @@ public:
             ParseReqLine(_req_line, LineSep);
 
             ParseHeader(request_str);
-            
+
             _body = request_str;
 
             // 分析请求中，是否含有参数..
@@ -165,7 +165,7 @@ public:
     }
     std::string Path() { return _path; }
     std::string Args() { return _args; }
-    std::string Suffix()
+    std::string Suffix() // TODO
     {
         // _uri -> wwwroot/index.html wwwroot/image/1.jpg wwwroot/login.html
         auto pos = _uri.rfind(".");
@@ -213,6 +213,20 @@ public:
     ~HttpResponse()
     {
     }
+    void SetCode(int code)
+    {
+        _status_code = code;
+        _status_desc = Code2Desc(_status_code);
+    }
+    void SetHeader(const std::string &k, const std::string &v)
+    {
+        _header_kv[k] = v;
+    }
+    void SetBody(const std::string &body)
+    {
+        _body = body;
+    }
+
     void Build(HttpRequest &req)
     {
         // std::string uri = req.Uri(); // wwwroot/   wwwroot/a/b/
@@ -263,19 +277,7 @@ public:
         SetHeader("Content-Type", mime_type);
         _body = _content;
     }
-    void SetCode(int code)
-    {
-        _status_code = code;
-        _status_desc = Code2Desc(_status_code);
-    }
-    void SetBody(const std::string &body)
-    {
-        _body = body;
-    }
-    void SetHeader(const std::string &k, const std::string &v)
-    {
-        _header_kv[k] = v;
-    }
+
     void Serialize(std::string *resp_str)
     {
         for (auto &header : _header_kv)
@@ -326,6 +328,7 @@ private:
     std::string _verion;
     int _status_code;
     std::string _status_desc;
+    
     std::string _content;
     std::unordered_map<std::string, std::string> _header_kv;
 
