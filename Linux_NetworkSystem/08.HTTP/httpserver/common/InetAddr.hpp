@@ -37,6 +37,14 @@ public:
         _net_addr.sin_port = htons(_port);
         _net_addr.sin_addr.s_addr = INADDR_ANY;
     }
+
+    void SetAddr(const sockaddr_in &client, socklen_t &len)
+    {
+        _net_addr = client;
+        (void)len;
+
+        IpNet2Host();
+    }
     bool operator==(const InetAddr &addr)
     {
         return _ip == addr._ip && _port == addr._port; // debug
@@ -52,13 +60,7 @@ public:
     {
         return Ip() + ":" + std::to_string(Port());
     }
-    void SetAddr(const sockaddr_in &client, socklen_t &len)
-    {
-        _net_addr = client;
-        (void)len;
 
-        IpNet2Host();
-    }
     ~InetAddr()
     {
     }

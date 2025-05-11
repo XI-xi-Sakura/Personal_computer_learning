@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单电商网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .header nav ul li {
+            margin-left: 20px;
+        }
+        .header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .header nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .main {
+            padding: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .product-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .product-card button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .product-card button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>简单电商网站</h1>
+        <nav>
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">产品分类</a></li>
+                <li><a href="/login.html">登录</a></li>
+                <li><a href="/register.html">注册</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <h2>热门产品</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="/image/1.jpg" alt="产品1">
+                <h3>产品1</h3>
+                <p>这是产品1的描述信息。</p>
+                <button>加入购物车</button>
+            </div>
+            <div class="product-card">
+                <img src="/image/2.jpg" alt="产品2">
+                <h3>产品2</h3>
+                <p>这是产品2的描述信息。</p>
+                <button>加入购物车</button>
+            </div>
+            <div class="product-card">
+                <img src="/image/3.jpg" alt="产品3">
+                <h3>产品3</h3>
+                <p>这是产品3的描述信息。</p>
+                <button>加入购物车</button>
+            </div>
+            <!-- 可以继续添加更多产品卡片 -->
+        </div>
+    </main>
+    <footer class="footer">
+        <p>版权所有 © 2025 简单电商网站</p>
+    </footer>
+</body>
+</html>

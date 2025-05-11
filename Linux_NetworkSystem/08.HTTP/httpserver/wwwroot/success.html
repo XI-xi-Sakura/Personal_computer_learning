@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录成功</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .message {
+            font-size: 20px;
+            color: green;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">登录成功！</div>
+    <div class="countdown" id="countdown">5秒后自动跳转到首页</div>
+
+    <script>
+        // 设置倒计时时间（秒）
+        let countdownTime = 5;
+
+        // 获取倒计时显示元素
+        const countdownElement = document.getElementById('countdown');
+
+        // 倒计时函数
+        const countdown = () => {
+            countdownElement.textContent = `${countdownTime}秒后自动跳转到首页`;
+            countdownTime--;
+
+            if (countdownTime < 0) {
+                // 倒计时结束，跳转到首页
+                window.location.href = 'http://8.137.19.140:8888'; // 替换为你的首页地址
+            }
+        };
+
+        // 每秒调用一次倒计时函数
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
