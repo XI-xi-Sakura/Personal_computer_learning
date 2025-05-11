@@ -9,6 +9,18 @@
 #include "./common/Common.hpp"
 #include "./common/Log.hpp"
 
+// GET /favicon.ico HTTP/1.1\r\n
+// Host: 8.137.19.140:8080
+// Connection: keep-alive
+// User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0
+// Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+// Referer: http://8.137.19.140:8080/?msg=i_have_sent_a_message_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_
+// Accept-Encoding: gzip, deflate
+// Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+// dnt: 1
+// sec-gpc: 1
+//
+
 const std::string Sep = "\r\n";
 const std::string LineSep = " ";
 const std::string HeaderLineSep = ": ";
@@ -29,31 +41,6 @@ public:
     bool IsHasArgs()
     {
         return _isexec;
-    }
-
-    // GET /favicon.ico HTTP/1.1\r\n
-    // Host: 8.137.19.140:8080
-    // Connection: keep-alive
-    // User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0
-    // Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-    // Referer: http://8.137.19.140:8080/?msg=i_have_sent_a_message_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_he_
-    // Accept-Encoding: gzip, deflate
-    // Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
-    // dnt: 1
-    // sec-gpc: 1
-    //
-    bool ParseHeaderkv()
-    {
-        std::string key, value;
-        for (auto &header : _req_header)
-        {
-            // Connection: keep-alive
-            if (SplitString(header, HeaderLineSep, &key, &value))
-            {
-                _headerkv.insert(std::make_pair(key, value));
-            }
-        }
-        return true;
     }
     bool ParseHeader(std::string &request_str)
     {
@@ -78,13 +65,28 @@ public:
         ParseHeaderkv();
         return true;
     }
+    bool ParseHeaderkv()
+    {
+        std::string key, value;
+        for (auto &header : _req_header)
+        {
+            // Connection: keep-alive
+            if (SplitString(header, HeaderLineSep, &key, &value))
+            {
+                _headerkv.insert(std::make_pair(key, value));
+            }
+        }
+        return true;
+    }
     void Deserialize(std::string &request_str)
     {
         if (ParseOneLine(request_str, &_req_line, Sep))
         {
             // 提取请求行中的详细字段
             ParseReqLine(_req_line, LineSep);
+
             ParseHeader(request_str);
+            
             _body = request_str;
 
             // 分析请求中，是否含有参数..
@@ -191,10 +193,13 @@ private:
     // 在反序列化的过程中，细化我们解析出来的字段
     std::string _method;
     std::string _uri; // 用户想要这个 // /login.html || /login?xxxxx
+    std::string _version;
+
     std::string _path;
     std::string _args;
-    std::string _version;
+
     std::unordered_map<std::string, std::string> _headerkv;
+
     bool _isexec = false;
 };
 
