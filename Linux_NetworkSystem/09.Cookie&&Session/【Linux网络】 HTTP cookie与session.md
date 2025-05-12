@@ -92,7 +92,7 @@ Set - Cookie: username=peter; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/; dom
 - 通过合理设置Set - Cookie的格式和属性，可以确保Cookie的安全性、有效性和可访问性，从而满足Web应用程序的需求。
 
 ## 实验测试cookie
-- [测试cookie的代码](https://gitee.com/xixi-sakura/personal_computer_learning/tree/main/Linux_NetworkSystem/09.Cookie/cookie)
+- [测试cookie的代码](https://gitee.com/xixi-sakura/personal_computer_learning/tree/main/Linux_NetworkSystem/09.Cookie&&Session/cookie)
 - chrome浏览器查看cookie不方便，我们推荐使用windows自带浏览器：Microsoft Edge应用
 
 
@@ -244,7 +244,7 @@ private:
 
 ## 模拟Session行为 
 
-[代码](https://gitee.com/xixi-sakura/personal_computer_learning/tree/main/Linux_NetworkSystem/09.Cookie/session)
+[代码](https://gitee.com/xixi-sakura/personal_computer_learning/tree/main/Linux_NetworkSystem/09.Cookie&&Session/session)
 
 ## 总结
 
