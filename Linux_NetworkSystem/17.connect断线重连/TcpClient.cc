@@ -65,10 +65,7 @@ public:
         }
         _status = Status::CONNECTED; // 连接成功
     }
-    int SocketFd()
-    {
-        return _sockfd;
-    }
+
     void Reconnect()
     {
         _status = Status::CONNECTING; // 正在重连
@@ -94,6 +91,10 @@ public:
             _status = Status::CLOSED;
             _sockfd = -1;
         }
+    }
+    int SocketFd()
+    {
+        return _sockfd;
     }
     Status GetStatus()
     {
