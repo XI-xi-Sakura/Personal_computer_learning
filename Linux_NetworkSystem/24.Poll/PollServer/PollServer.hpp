@@ -27,7 +27,7 @@ public:
     void Init()
     {
         _listen_socket->BuildTcpSocketMethod(_port);
-        for(int i = 0;i < MAX; i++)
+        for (int i = 0; i < MAX; i++)
         {
             _fds[i].fd = gdefaultfd;
             _fds[i].events = 0;
@@ -65,6 +65,34 @@ public:
             }
         }
         _isrunning = false;
+    }
+
+    void Dispatcher() // rfds就可能会有更多的fd就绪了，就不仅仅 是listenfd就绪了
+    {
+        for (int i = 0; i < MAX; i++)
+        {
+            if (_fds[i].fd == gdefaultfd)
+                continue;
+            // 文件描述符，先得是合法的
+            if (_fds[i].fd == _listen_socket->Fd()) // 该fd是listenfd
+            {
+                if (_fds[i].revents & POLLIN)
+                {
+                    Accepter(); // 连接的获取
+                }
+            }
+            else
+            {
+                if (_fds[i].revents & POLLIN)
+                {
+                    Recver(i); // IO的处理
+                }
+                // else if(_fds[i].revents & POLLOUT)
+                // {
+                //     // wirte
+                // }
+            }
+        }
     }
     void Accepter() // 回调函数呢？
     {
@@ -124,47 +152,21 @@ public:
         }
         else
         {
-            LOG(LogLevel::DEBUG) << "客户端读取出错, sockfd: " <<_fds[who].fd;
+            LOG(LogLevel::DEBUG) << "客户端读取出错, sockfd: " << _fds[who].fd;
             close(_fds[who].fd);
             _fds[who].fd = gdefaultfd;
             _fds[who].events = _fds[who].revents = 0;
         }
     }
-    void Dispatcher() // rfds就可能会有更多的fd就绪了，就不仅仅 是listenfd就绪了
+
+    void TestFd()
     {
+        std::cout << "pollfd: ";
         for (int i = 0; i < MAX; i++)
         {
             if (_fds[i].fd == gdefaultfd)
                 continue;
-            // 文件描述符，先得是合法的
-            if (_fds[i].fd == _listen_socket->Fd()) // 该fd是listenfd
-            {
-                if (_fds[i].revents & POLLIN)
-                {
-                    Accepter(); // 连接的获取
-                }
-            }
-            else
-            {
-                if (_fds[i].revents & POLLIN)
-                {
-                    Recver(i); // IO的处理
-                }
-                // else if(_fds[i].revents & POLLOUT)
-                // {
-                //     // wirte
-                // }
-            }
-        }
-    }
-    void TestFd()
-    {
-        std::cout << "pollfd: ";
-        for(int i = 0; i < MAX; i++)
-        {
-            if(_fds[i].fd == gdefaultfd)
-                continue;
-            std::cout << _fds[i].fd << "[" << Events2Str(_fds[i].events)  << "] ";
+            std::cout << _fds[i].fd << "[" << Events2Str(_fds[i].events) << "] ";
         }
         std::cout << "\n";
     }
