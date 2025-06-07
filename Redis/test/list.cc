@@ -16,6 +16,10 @@ using sw::redis::Redis;
 
 using namespace std::chrono_literals;
 
+
+// list 的基本操作
+
+// 1. lpush 和 lrange
 void test1(Redis& redis) {
     std::cout << "lpush 和 lrange" << std::endl;
     redis.flushall();
@@ -38,6 +42,7 @@ void test1(Redis& redis) {
     printContainer(results);
 }
 
+// 2. rpush 和 lrange
 void test2(Redis& redis) {
     std::cout << "rpush" << std::endl;
     redis.flushall();
@@ -60,6 +65,7 @@ void test2(Redis& redis) {
     printContainer(results);
 }
 
+// 3. lpop 和 rpop
 void test3(Redis& redis) {
     std::cout << "lpop 和 rpop" << std::endl;
     redis.flushall();
@@ -78,6 +84,8 @@ void test3(Redis& redis) {
     }
 }
 
+// 4. blpop 和 brpop
+// blpop 和 brpop 是阻塞的版本
 void test4(Redis& redis) {
     using namespace std::chrono_literals;
     std::cout << "blpop" << std::endl;
@@ -92,6 +100,7 @@ void test4(Redis& redis) {
     }
 }
 
+// 5. llen
 void test5(Redis& redis) {
     std::cout << "llen" << std::endl;
     redis.flushall();
