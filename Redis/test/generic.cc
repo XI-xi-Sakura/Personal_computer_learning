@@ -10,15 +10,16 @@
 
 using std::cout;
 using std::endl;
-using std::vector;
 using std::string;
 using std::unordered_map;
+using std::vector;
 
 // get 和 set
-void test1(sw::redis::Redis& redis) {
+void test1(sw::redis::Redis &redis)
+{
     std::cout << "get 和 set 的使用" << std::endl;
 
-    // 清空一下数据库, 避免之前残留的数据有干扰. 
+    // 清空一下数据库, 避免之前残留的数据有干扰.
     redis.flushall();
 
     // 使用 set 设置 key
@@ -29,27 +30,33 @@ void test1(sw::redis::Redis& redis) {
     // 使用 get 获取到 key 对应的 value
     auto value1 = redis.get("key1");
     // optional 可以隐式转成 bool 类型, 可以直接在 if 中判定. 如果是无效元素, 就是返回 false
-    if (value1) {
+    if (value1)
+    {
         std::cout << "value1=" << value1.value() << std::endl;
     }
 
     auto value2 = redis.get("key2");
-    if (value2) {
+    if (value2)
+    {
         std::cout << "value2=" << value2.value() << std::endl;
     }
 
     auto value3 = redis.get("key3");
-    if (value3) {
+    if (value3)
+    {
         std::cout << "value3=" << value3.value() << std::endl;
     }
 
     auto value4 = redis.get("key4");
-    if (value4) {
+    if (value4)
+    {
         std::cout << "value4=" << value4.value() << std::endl;
     }
 }
 
-void test2(sw::redis::Redis& redis) {
+// exists
+void test2(sw::redis::Redis &redis)
+{
     std::cout << "exists" << std::endl;
 
     redis.flushall();
@@ -67,9 +74,11 @@ void test2(sw::redis::Redis& redis) {
     std::cout << ret << std::endl;
 }
 
-void test3(sw::redis::Redis& redis) {
+// del
+void test3(sw::redis::Redis &redis)
+{
     std::cout << "del" << std::endl;
-    // 清除库非常必要的! 
+    // 清除库非常必要的!
     redis.flushall();
 
     redis.set("key", "111");
@@ -84,7 +93,9 @@ void test3(sw::redis::Redis& redis) {
     std::cout << ret << std::endl;
 }
 
-void test4(sw::redis::Redis& redis) {
+// keys
+void test4(sw::redis::Redis &redis)
+{
     std::cout << "keys" << std::endl;
     redis.flushall();
 
@@ -95,15 +106,22 @@ void test4(sw::redis::Redis& redis) {
     redis.set("key5", "555");
     redis.set("key6", "666");
 
-    // keys 的第二个参数, 是一个 "插入迭代器". 咱们需要先准备好一个保存结果的容器. 
-    // 接下来再创建一个插入迭代器指向容器的位置. 就可以把 keys 获取到的结果依次通过刚才的插入迭代器插入到容器的指定位置中了. 
+    // keys 的第二个参数, 是一个 "插入迭代器". 咱们需要先准备好一个保存结果的容器.
+    // 接下来再创建一个插入迭代器指向容器的位置. 就可以把 keys 获取到的结果依次通过刚才的插入迭代器插入到容器的指定位置中了.
     vector<string> result;
+    
+    // 插入迭代器: 可以把容器当作一个序列, 然后通过这个迭代器, 可以依次把容器中的元素插入到容器的指定位置中.
+    // 此处, 我们把 result 当作一个序列, 然后通过 back_inserter 函数, 得到一个插入迭代器, 指向 result 的末尾.
+    // 这样, 就可以把 keys 获取到的结果依次插入到 result 的末尾了.
     auto it = std::back_inserter(result);
+
     redis.keys("*", it);
     printContainer(result);
 }
 
-void test5(sw::redis::Redis& redis) {
+// expire 和 ttl
+void test5(sw::redis::Redis &redis)
+{
     using namespace std::chrono_literals;
 
     std::cout << "expire and ttl" << std::endl;
@@ -119,7 +137,9 @@ void test5(sw::redis::Redis& redis) {
     std::cout << time << std::endl;
 }
 
-void test6(sw::redis::Redis& redis) {
+// type
+void test6(sw::redis::Redis &redis)
+{
     std::cout << "type" << std::endl;
     redis.flushall();
 
@@ -144,7 +164,8 @@ void test6(sw::redis::Redis& redis) {
     std::cout << "key5: " << result << std::endl;
 }
 
-int main() {
+int main()
+{
     sw::redis::Redis redis("tcp://127.0.0.1:6379");
 
     // test1(redis);
