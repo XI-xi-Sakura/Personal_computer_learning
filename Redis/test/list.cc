@@ -9,18 +9,18 @@
 
 using std::cout;
 using std::endl;
-using std::vector;
 using std::string;
 using std::unordered_map;
+using std::vector;
 using sw::redis::Redis;
 
 using namespace std::chrono_literals;
 
-
 // list 的基本操作
 
 // 1. lpush 和 lrange
-void test1(Redis& redis) {
+void test1(Redis &redis)
+{
     std::cout << "lpush 和 lrange" << std::endl;
     redis.flushall();
 
@@ -43,7 +43,8 @@ void test1(Redis& redis) {
 }
 
 // 2. rpush 和 lrange
-void test2(Redis& redis) {
+void test2(Redis &redis)
+{
     std::cout << "rpush" << std::endl;
     redis.flushall();
 
@@ -66,7 +67,8 @@ void test2(Redis& redis) {
 }
 
 // 3. lpop 和 rpop
-void test3(Redis& redis) {
+void test3(Redis &redis)
+{
     std::cout << "lpop 和 rpop" << std::endl;
     redis.flushall();
 
@@ -74,34 +76,46 @@ void test3(Redis& redis) {
     redis.rpush("key", {"1", "2", "3", "4"});
 
     auto result = redis.lpop("key");
-    if (result) {
+    if (result)
+    {
         std::cout << "lpop: " << result.value() << std::endl;
     }
 
     result = redis.rpop("key");
-    if (result) {
+    if (result)
+    {
         std::cout << "rpop: " << result.value() << std::endl;
     }
 }
 
 // 4. blpop 和 brpop
 // blpop 和 brpop 是阻塞的版本
-void test4(Redis& redis) {
+void test4(Redis &redis)
+{
     using namespace std::chrono_literals;
     std::cout << "blpop" << std::endl;
     redis.flushall();
 
+    // OptionalStringPair blpop(const std::vector<std::string>& keys, std::chrono::milliseconds timeout);
+    // 返回值： 返回类型为 OptionalStringPair，即 std::optional<std::pair<std::string, std::string>>。
+    //         如果在超时时间内成功从某个列表弹出元素，OptionalStringPair 会包含一个 std::pair，
+    //         其中 first 是元素所属列表的键名，second 是弹出的元素值；
+    // 若超时后仍无元素可弹出，返回空的 std::optional 对象。
     auto result = redis.blpop({"key", "key2", "key3"}, 10s);
-    if (result) {
+    if (result)
+    {
         std::cout << "key:" << result->first << std::endl;
         std::cout << "elem:" << result->second << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "result 无效!" << std::endl;
     }
 }
 
 // 5. llen
-void test5(Redis& redis) {
+void test5(Redis &redis)
+{
     std::cout << "llen" << std::endl;
     redis.flushall();
 
@@ -110,7 +124,8 @@ void test5(Redis& redis) {
     std::cout << "len: " << len << std::endl;
 }
 
-int main() {
+int main()
+{
     Redis redis("tcp://127.0.0.1:6379");
     // test1(redis);
     // test2(redis);
