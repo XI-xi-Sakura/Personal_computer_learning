@@ -1,0 +1,37 @@
+version: '3.7'
+
+# 定义 Redis Sentinel 服务的公共配置
+x-sentinel-common: &sentinel-common
+  image: 'redis:5.0.9'
+  restart: always
+  command: redis-sentinel /etc/redis/sentinel.conf
+
+services:
+  sentinel1:
+    <<: *sentinel-common
+    container_name: redis-sentinel-1
+    volumes:
+      - ./sentinel1.conf:/etc/redis/sentinel.conf
+    ports:
+      - 26379:26379
+
+  sentinel2:
+    <<: *sentinel-common
+    container_name: redis-sentinel-2
+    volumes:
+      - ./sentinel2.conf:/etc/redis/sentinel.conf
+    ports:
+      - 26380:26379
+
+  sentinel3:
+    <<: *sentinel-common
+    container_name: redis-sentinel-3
+    volumes:
+      - ./sentinel3.conf:/etc/redis/sentinel.conf
+    ports:
+      - 26381:26379
+
+networks:
+  default:
+    external:
+      name: redis-data_default

@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  master:
+    image: 'redis:5.0.9'
+    container_name: redis-master
+    restart: always
+    command: redis-server --appendonly yes
+    ports:
+      - 6380:6379
+  slave1:
+    image: 'redis:5.0.9'
+    container_name: redis-slave1
+    restart: always
+    command: redis-server --appendonly yes --slaveof redis-master 6379
+    ports:
+      - 6381:6379
+  slave2:
+    image: 'redis:5.0.9'
+    container_name: redis-slave2
+    restart: always
+    command: redis-server --appendonly yes --slaveof redis-master 6379
+    ports:
+      - 6382:6379
