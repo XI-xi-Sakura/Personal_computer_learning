@@ -1,0 +1,172 @@
+version: '3.7'
+networks:
+  mynet:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+
+services:
+  redis1:
+    image: 'redis:5.0.9'
+    container_name: redis1
+    restart: always
+    volumes:
+      - ./redis1/:/etc/redis/
+    ports:
+      - 6371:6379
+      - 16371:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.101
+
+  redis2:
+    image: 'redis:5.0.9'
+    container_name: redis2
+    restart: always
+    volumes:
+      - ./redis2/:/etc/redis/
+    ports:
+      - 6372:6379
+      - 16372:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.102
+
+  redis3:
+    image: 'redis:5.0.9'
+    container_name: redis3
+    restart: always
+    volumes:
+      - ./redis3/:/etc/redis/
+    ports:
+      - 6373:6379
+      - 16373:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.103
+
+  redis4:
+    image: 'redis:5.0.9'
+    container_name: redis4
+    restart: always
+    volumes:
+      - ./redis4/:/etc/redis/
+    ports:
+      - 6374:6379
+      - 16374:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.104
+
+  redis5:
+    image: 'redis:5.0.9'
+    container_name: redis5
+    restart: always
+    volumes:
+      - ./redis5/:/etc/redis/
+    ports:
+      - 6375:6379
+      - 16375:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.105
+
+  redis6:
+    image: 'redis:5.0.9'
+    container_name: redis6
+    restart: always
+    volumes:
+      - ./redis6/:/etc/redis/
+    ports:
+      - 6376:6379
+      - 16376:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.106
+
+  redis7:
+    image: 'redis:5.0.9'
+    container_name: redis7
+    restart: always
+    volumes:
+      - ./redis7/:/etc/redis/
+    ports:
+      - 6377:6379
+      - 16377:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.107
+
+  redis8:
+    image: 'redis:5.0.9'
+    container_name: redis8
+    restart: always
+    volumes:
+      - ./redis8/:/etc/redis/
+    ports:
+      - 6378:6379
+      - 16378:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.108
+
+  redis9:
+    image: 'redis:5.0.9'
+    container_name: redis9
+    restart: always
+    volumes:
+      - ./redis9/:/etc/redis/
+    ports:
+      - 6379:6379
+      - 16379:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.109
+
+  redis10:
+    image: 'redis:5.0.9'
+    container_name: redis10
+    restart: always
+    volumes:
+      - ./redis10/:/etc/redis/
+    ports:
+      - 6380:6379
+      - 16380:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.110
+
+  redis11:
+    image: 'redis:5.0.9'
+    container_name: redis11
+    restart: always
+    volumes:
+      - ./redis11/:/etc/redis/
+    ports:
+      - 6381:6379
+      - 16381:16379
+    command:
+      redis-server /etc/redis/redis.conf
+    networks:
+      mynet:
+        ipv4_address: 172.30.0.111
