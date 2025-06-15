@@ -167,7 +167,7 @@ namespace bit
             _node = _node->_next;
             return *this;
         }
-        operator*()
+        T operator*()
         {
             return _node->_data;
         }
@@ -243,16 +243,56 @@ namespace bit
         Node *_head;
     };
 }
+// int main()
+// {
+//     bit::string s1("xxxxx");
+//     // 拷贝构造
+//     bit::string s2 = s1;
+//     // 构造+移动构造,优化后直接构造
+//     bit::string s3 = bit::string("yyyyy");
+//     // 移动构造
+//     bit::string s4 = move(s1);
+//     cout << "******************************" << endl;
+
+//     return 0;
+// }
+
+template <class T>
+void Function(T &&t)
+{
+    int a = 0;
+    T x = a;
+    x++;
+  
+    cout << a << endl;
+    cout << x << endl;
+    cout << &a << endl;
+    cout << &x << endl
+         << endl;
+}
+
 int main()
 {
-    bit::string s1("xxxxx");
-    // 拷贝构造
-    bit::string s2 = s1;
-    // 构造+移动构造,优化后直接构造
-    bit::string s3 = bit::string("yyyyy");
-    // 移动构造
-    bit::string s4 = move(s1);
-    cout << "******************************" << endl;
+    // 10是右值,推导出T为int,模板实例化为void Function(int&& t)
+    Function(10); // 右值
+
+    int a;
+    // a是左值,推导出T为int&,引用折叠,模板实例化为void Function(int& t)
+    Function(a); // 左值
+
+    // std::move(a)是右值,推导出T为int,模板实例化为void Function(int&& t)
+    Function(std::move(a)); // 右值
+
+    const int b = 8;
+    // a是左值,推导出T为const int&,引用折叠,模板实例化为void Function(const int&
+    // t)
+    // 所以Function内部会编译报错,x不能++
+    // Function(b); // const 左值
+
+    // std::move(b)右值,推导出T为const int,模板实例化为void Function(const int&&
+    // t)
+    // 所以Function内部会编译报错,x不能++
+    // Function(std::move(b)); // const 右值
 
     return 0;
 }
