@@ -211,15 +211,33 @@ void Func(Person *ptr)
 	// 但是跟ptr没关系，而是由ptr指向的对象决定的。
 	ptr->BuyTicket();
 }
+// int main()
+// {
+// 	// 其次多态不仅仅发生在派生类对象之间，多个派生类继承基类，重写虚函数后
+// 	// 多态也会发生在多个派生类之间。
+// 	Person ps;
+// 	Student st;
+// 	Soldier sr;
+// 	Func(&ps);
+// 	Func(&st);
+// 	Func(&sr);
+// 	return 0;
+// }
+
+class Base
+{
+public:
+    // virtual void Func1()
+    // {
+    //     cout << "Func1()" << endl;
+    // }
+protected:
+    int _b = 1;
+    char _ch = 'x';
+};
 int main()
 {
-	// 其次多态不仅仅发生在派生类对象之间，多个派生类继承基类，重写虚函数后
-	// 多态也会发生在多个派生类之间。
-	Person ps;
-	Student st;
-	Soldier sr;
-	Func(&ps);
-	Func(&st);
-	Func(&sr);
-	return 0;
+    Base b;
+    cout << sizeof(b) << endl;
+    return 0;
 }
