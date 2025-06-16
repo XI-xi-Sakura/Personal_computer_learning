@@ -184,35 +184,33 @@ using namespace std;
 // 	cout << A::GetACount() << endl;
 // }
 
-
 class A
 {
 private:
-	 static int k;
-	 int h =100;
-	 
-public:
+    static int k;
+    int h = 100;
 
- class B // B天生就是A的友元
- {
- public:
-	 void foo(const A& a)
-	 {
-		 cout << k << endl;//OK
-		 cout << a.h << endl;//OK
-	 }
- };
+public:
+    class B // B天生就是A的友元
+    {
+    public:
+        void foo(const A &a)
+        {
+            cout << k << endl;   // OK
+            cout << a.h << endl; // OK
+        }
+    };
 };
 
-int A::k = 1;
+// int A::k = 1;
 
-int main()
-{
- 	A::B b;
- 	b.foo(A());
- 
- 	return 0;
-}
+// int main()
+// {
+//  	A::B b;
+//  	b.foo(A());
+
+//  	return 0;
+// }
 
 // int main()
 // {
@@ -220,3 +218,117 @@ int main()
 // 	TestA();
 // 	return 0;
 // }
+
+// #include <iostream>
+// using namespace std;
+
+// int solve(int x) {
+//     if (x == 0 || x == 1) {
+//         return x;
+//     }
+//     if (x % 2 == 0) {
+//         return 1 + solve(x / 2);
+//     }
+//     else {
+//         return 1 + solve((x + 1) / 2);
+//     }
+// }
+
+// void increment_ints (int p [ ], int n)
+// {
+//   assert(p != NULL);  /* 确保p不为空指针 */
+//   assert(n >= 0);  /* 确保n不为负数 */
+//   while (n)  /* 循环n次. */
+//   {
+//     *p++;          /* 增大p*/
+//     p++, n--;      /* p指向下一位，n减1 */
+//   }
+// }
+
+// int main() {
+//     int  n = 100;
+//     int ans = solve(n);
+//     cout << ans << endl;
+//     return 0;
+// }
+
+class Base
+{
+public:
+    Base()
+    {
+        echo();
+    }
+    virtual void echo()
+    {
+        printf("Base");
+    }
+};
+
+class Derived : public Base
+{
+public:
+    Derived()
+    {
+        echo();
+    }
+    virtual void echo()
+    {
+        printf("Derived");
+    }
+};
+#include <sys/types.h>
+#include <unistd.h>
+
+// int main()
+// {
+//     // Base *base = new Derived();
+//     // base->echo();
+
+//     for (int i = 0; i < 2; i++)
+//     {
+//         fork();
+//         printf("-\n");
+//     }
+//     // char a ='\'';
+//     return 0;
+// }
+
+#include <vector>
+// int main()
+// {
+//     vector<int> vInt;
+//     for (int i = 0; i < 5; ++i)
+//     {
+//         vInt.push_back(i);
+//         cout << vInt.capacity() << " ";
+//     }
+//     vector<int> vTmp(vInt);
+//     cout << vTmp.capacity() << "\n";
+//     return 0;
+// }
+
+
+int a;
+int b;
+int c;
+ 
+void F1(){
+    b = a * 2;
+    a = b;
+}
+ 
+void F2(){
+    c = a + 1;
+    a = c;
+}
+ 
+int main(){
+    a = 5;
+    // !!! Start F1(),F2() in parallel
+    {
+        F1();
+        F2();
+    }
+    printf("%d\n", a);
+}
