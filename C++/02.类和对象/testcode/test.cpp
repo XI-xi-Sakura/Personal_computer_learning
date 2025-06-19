@@ -308,27 +308,42 @@ public:
 //     return 0;
 // }
 
-
 int a;
 int b;
 int c;
- 
-void F1(){
+
+void F1()
+{
     b = a * 2;
     a = b;
 }
- 
-void F2(){
+
+void F2()
+{
     c = a + 1;
     a = c;
 }
- 
-int main(){
-    a = 5;
-    // !!! Start F1(),F2() in parallel
-    {
-        F1();
-        F2();
-    }
-    printf("%d\n", a);
+
+// int main(){
+//     a = 5;
+//     // !!! Start F1(),F2() in parallel
+//     {
+//         F1();
+//         F2();
+//     }
+//     printf("%d\n", a);
+// }
+#include <string.h>
+void Func(char str_arg[100])
+{
+    printf("%d\n", sizeof(str_arg));
+}
+int main(void)
+{
+    char str[] = "Hello";
+    printf("%d\n", sizeof(str));
+    printf("%d\n", strlen(str));
+    char *p = str;
+    printf("%d\n", sizeof(p));
+    Func(str);
 }
